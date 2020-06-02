@@ -55,4 +55,4 @@
     </div>
     <div class="page">
     <div class="container-fluid">
-        
+      <?php include_once('footer.php');?>  
