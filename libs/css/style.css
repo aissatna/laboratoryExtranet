@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------*/
 /* BASIC
 /*--------------------------------------------------------------*/
-
+/*color :rgba(13, 70, 83, 0.78)*/
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -16,6 +16,29 @@ a{
     text-decoration: none;
     color: #777777;
 }
+/*--------------------------------------------------------------*/
+/* LOGIN-PAGE
+/*--------------------------------------------------------------*/
+#login-page{
+    background-image: linear-gradient(rgba(13, 70, 83, 0.78), rgba(13, 70, 83, 0.78)), url("img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+#login-page .form-container{
+    border: 0 solid #ffffff;
+    padding: 30px 40px;
+    margin-top: 20vh;
+    box-shadow: -1px 4px 26px 11px rgba(255,255,255,0.7);
+}
+#login-page .btn-login{
+    padding: 10px 20px;
+    background-color: rgba(12, 184, 182, 0.91);
+    border-radius: 3px;
+    color: #fff;
+}
+
 /*--------------------------------------------------------------*/
 /* HEADER-PAGE
 /*--------------------------------------------------------------*/
@@ -38,7 +61,16 @@ a{
     letter-spacing: 1px;
     display: inline-block;
     width: 250px;
-    background-color: #3498DB;
+    background-color: #17a2b8;
+}
+#header-page .logo a i{
+    color: #ffffff;
+    font-weight: 500;
+    text-align: center;
+}
+#header-page .logo a i:hover{
+    color: #000;
+
 }
 .header-date{
     color: #9b9b9b;
@@ -104,10 +136,11 @@ a{
     top: 0;
     padding: 65px 0 0;
     height: 100%;
-    width: 250px;
-    background: #2a3542;
+    width: 0;
+    background: rgba(21,78,96,0.8);
     border-right: 1px solid #ddd;
-    text-align: center
+    text-align: center;
+    transition: 0.5s;
 }
 .sidebar ul{
     list-style: none;
@@ -145,7 +178,17 @@ a{
      padding: 15px 15px;
      text-align: center;
  }
-
+/*---------------- main-page-----------------*/
+.main-page{
+    position: relative;
+    display: block;
+    top: 50px;
+    left: 0;
+    padding: 35px 15px 20px 15px;;
+}
+.jumbotron{
+    margin-bottom: 0;
+}
 
 
 

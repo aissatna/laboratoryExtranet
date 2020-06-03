@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,8 +12,10 @@
 
 </head>
 <body>
+<?php  if ($session->isUserLoggedIn()): ?>
 <header id="header-page">
-    <div class="logo pull-left"> Stroma-Lab-Inventory </div>
+    <div class="logo pull-left"> <a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger"></i></a> <span>Stroma-Lab-Inventory</span>
+    </div>
     <div class="header-content">
         <div class="header-date pull-left">
             <strong><?php echo date("F j, Y, g:i a");?></strong>
@@ -49,10 +52,10 @@
         </div>
     </div>
 </header>
-    <div class="sidebar">
+    <div class="sidebar" id="js__sidebar">
         <!-- admin menu -->
         <?php include_once('admin_menu.php');?>
     </div>
-    <div class="page">
+<?php endif;?>
+    <div class="main-page" id="js__main-page">
     <div class="container-fluid">
-      
