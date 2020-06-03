@@ -52,6 +52,7 @@ a{
     height: 65px;
     line-height: 65px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+
 }
 #header-page .logo{
     color: #fff;
@@ -137,10 +138,14 @@ a{
     padding: 65px 0 0;
     height: 100%;
     width: 0;
-    background: rgba(21,78,96,0.8);
+   /* background: rgba(21,78,96,0.8);*/
     border-right: 1px solid #ddd;
     text-align: center;
     transition: 0.5s;
+    background-image: linear-gradient(rgba(13, 70, 83, 0.78), rgba(13, 70, 83, 0.78)), url("img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 .sidebar ul{
     list-style: none;
