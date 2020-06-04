@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="last">
-                            <a href="#">
+                            <a href="../php/logout.php">
                                 <i class="glyphicon glyphicon-off"></i>
                                 Logout
                             </a>

@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a href="#">
+        <a href="../php/antibody.php">
             <i class="glyphicon glyphicon-eye-open"></i>
             <span>Consulter les anticorps </span>
         </a>
@@ -18,7 +18,7 @@
         </a>
     </li>
     <li>
-        <a href="#">
+        <a href="../php/project.php">
             <i class="glyphicon glyphicon-eye-open"></i>
             <span>Consulter les projets </span>
         </a>
