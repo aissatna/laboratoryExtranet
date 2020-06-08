@@ -42,5 +42,30 @@ function redirect($url, $permanent = false)
 
     exit();
 }
-
+/*--------------------------------------------------------------*/
+/* Function for Uppercase first character
+/*--------------------------------------------------------------*/
+function first_character($str){
+    $val = str_replace('-'," ",$str);
+    $val = ucfirst($val);
+    return $val;
+}
+/*--------------------------------------------------------------*/
+/* Function for Display Session Message
+   Ex echo display_msg($message);
+/*--------------------------------------------------------------*/
+function display_msg($msg =''){
+    $output = array();
+    if(!empty($msg)) {
+        foreach ($msg as $key => $value) {
+            $output  = "<div class=\"alert alert-{$key}\">";
+            $output .= "<a href=\"#\" class=\"close\" data-dismiss=\"alert\">&times;</a>";
+            $output .= remove_junk(first_character($value));
+            $output .= "</div>";
+        }
+        return $output;
+    } else {
+        return "" ;
+    }
+}
 ?>

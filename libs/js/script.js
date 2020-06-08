@@ -13,5 +13,6 @@ function toggleSideBar() {
     {
         sideBar.style.width = '250px';
         main_page.style.marginLeft='250px';
+        
     }
 }

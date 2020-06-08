@@ -5,7 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>
+        <?php if (!empty($page_title))
+                echo remove_junk($page_title);
+            else echo "Stroma-Lab-Inventory";?>
+    </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
@@ -25,7 +29,7 @@
                 <li class="profile">
                     <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
                         <img src="../uploads/no_image.jpg" alt="user-image" class="img-circle img-inline">
-                        <span>UserName <i class="caret"></i></span>
+                        <span>Admin <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>

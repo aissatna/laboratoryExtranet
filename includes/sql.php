@@ -31,6 +31,15 @@ function find_all_projects(){
     return $result;
 }
 /*--------------------------------------------------------------*/
+/* Function for Finding all species
+/*--------------------------------------------------------------*/
+
+function find_all_species(){
+    $sql = "SELECT * FROM especes";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
 /* Login with the data provided in $_POST,
 /* coming from the login form.
 /*--------------------------------------------------------------*/
@@ -48,4 +57,5 @@ function authenticate($username='', $password='') {
     }
     return false;
 }
+
 ?>

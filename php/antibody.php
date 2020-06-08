@@ -1,15 +1,15 @@
 <?php ob_start();
-$page_title = 'All Group';
+$page_title = 'Anticorps';
 require_once('../includes/load.php');
 $all_antibodies = find_all_antibodies();
 ?>
 <?php include_once('../layouts/header.php'); ?>
-<!--<div class="row">
+<div class="row">
     <div class="col-md-12">
-        <?php /*echo display_msg($msg); */?>
+        <?php echo display_msg($msg); ?>
     </div>
 </div>
--->
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -18,9 +18,12 @@ $all_antibodies = find_all_antibodies();
                     <span class="glyphicon glyphicon-th"></span>
                     <span>Anticorps</span>
                 </strong>
+                <div class="pull-right">
+                    <a href="" class="btn btn-primary">Nouveau anticorps</a>
+                </div>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
 <!--                        <th class="text-center">Identifiant</th>-->
@@ -38,7 +41,7 @@ $all_antibodies = find_all_antibodies();
                             <?php /*echo $antibody['IdentifiantA']*/?>
                         </td>-->
                         <td class="text-center">
-                            <?php echo $antibody['DesignationA']?>
+                            <?php echo first_character( $antibody['DesignationA'])?>
                         </td>
                         <td class="text-center">
                             <?php echo $antibody['QuantiteStock']?>
@@ -47,7 +50,19 @@ $all_antibodies = find_all_antibodies();
                             <?php echo $antibody['SeuilAlerte']?>
                         </td>
                         <td class="text-center">
-                            <?php echo $antibody['EtatStockA']?>
+                        <?php switch ($antibody['EtatStockA']):case "Bon": ?>
+                            <span class="label label-success"><?php echo $antibody['EtatStockA']; ?></span>
+                            <?php break;?>
+                            <?php case "Risque": ?>
+                            <span class="label label-warning"><?php echo $antibody['EtatStockA']; ?></span>
+                            <?php break;?>
+                            <?php case "Rupture": ?>
+                            <span class="label label-danger"><?php echo $antibody['EtatStockA']; ?></span>
+                            <?php break;?>
+                            <?php case "Signaler": ?>
+                            <span class="label label-info"><?php echo $antibody['EtatStockA']; ?></span>
+                            <?php break;?>
+                        <?php endswitch;?>
                         </td>
                         <td class="text-center">
                             <div class="btn-group">

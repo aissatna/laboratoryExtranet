@@ -23,7 +23,7 @@ require_once('../includes/load.php');
                         <h1>Welcome</h1>
                         <p>Sign in to start your session</p>
                     </div>
-                    <!--    <?php //echo display_msg($msg); ?>    -->
+                     <?php echo display_msg($msg); ?>
                 <form method="post" action="auth.php">
                     <div class="form-group">
                         <label for="username" class="control-label">Username</label>

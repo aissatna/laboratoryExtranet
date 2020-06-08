@@ -11,7 +11,7 @@ if(empty($errors)){
         $session->login($user_id);
         //Update Sign in time
        // updateLastLogIn($user_id);
-        $session->msg("s", "Welcome to IMS.");
+        $session->msg("s", "Welcome to Stroma-Lab-Inventory.");
         redirect('home_manager.php',false);
 
     } else {
