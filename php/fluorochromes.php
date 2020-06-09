@@ -1,27 +1,7 @@
 <?php ob_start();
-$page_title = 'Espèces';
+$page_title = 'Fluorochromes';
 require_once('../includes/load.php');
-$all_species = find_all_species();
-?>
-<?php
-if(isset($_POST['add_species'])){
-    $req_field = array('species_name');
-    validate_fields($req_field);
-    $species_name = remove_junk($db->escape($_POST['species_name']));
-    if(empty($errors)){
-        $sql  = "INSERT INTO especes (libelleEsp) VALUES ('{$species_name}')";
-        if($db->query($sql)){
-            $session->msg("s", "Espèce ajoutée ");
-            redirect('species.php',false);
-        } else {
-            $session->msg("d", "L'ajout a échoué.");
-            redirect('species.php',false);
-        }
-    } else {
-        $session->msg("d", $errors);
-        redirect('species.php',false);
-    }
-}
+$all_Fluorochromes = find_all_fluorochromes();
 ?>
 <?php include_once('../layouts/header.php'); ?>
     <div class="row">
@@ -35,7 +15,7 @@ if(isset($_POST['add_species'])){
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Espèces</span>
+                        <span>Fluorochromes</span>
                     </strong>
                 </div>
                 <div class="panel-body">
@@ -43,17 +23,17 @@ if(isset($_POST['add_species'])){
                         <thead>
                         <tr>
 
-                            <th class="text-center">Espèces</th>
+                            <th class="text-center">Fluorochromes</th>
                             <th class="text-center" >Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_species as $species):?>
+                        <?php foreach ($all_Fluorochromes as $fluorochrome):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($species['libelleEsp'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($fluorochrome['libelleFluo'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="delete_species.php?IdentifiantEsp=<?php echo (int)$species['IdentifiantEsp'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                                        <a href="#"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
@@ -71,15 +51,15 @@ if(isset($_POST['add_species'])){
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Nouveau espèce</span>
+                        <span>Nouveau Fluorochrome</span>
                     </strong>
                 </div>
                 <div class="panel-body">
                     <form method="post" action="#">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="species_name" placeholder="Espèce Libellé">
+                            <input type="text" class="form-control" name="Fluorochrome_name" placeholder="Fluorochrome Libellé">
                         </div>
-                        <button type="submit" name="add_species" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" name="add_Fluorochrome" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>

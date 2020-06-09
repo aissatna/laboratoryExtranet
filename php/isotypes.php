@@ -1,25 +1,25 @@
 <?php ob_start();
-$page_title = 'Espèces';
+$page_title = 'Isotypes';
 require_once('../includes/load.php');
-$all_species = find_all_species();
+$all_isotypes = find_all_isotypes();
 ?>
 <?php
-if(isset($_POST['add_species'])){
-    $req_field = array('species_name');
+if(isset($_POST['add_isotype'])){
+    $req_field = array('isotype_name');
     validate_fields($req_field);
-    $species_name = remove_junk($db->escape($_POST['species_name']));
+    $isotype_name = remove_junk($db->escape($_POST['isotype_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO especes (libelleEsp) VALUES ('{$species_name}')";
+        $sql  = "INSERT INTO types (libelleType) VALUES ('{$isotype_name}')";
         if($db->query($sql)){
-            $session->msg("s", "Espèce ajoutée ");
-            redirect('species.php',false);
+            $session->msg("s", "Isotype ajouté ");
+            redirect('isotypes.php',false);
         } else {
             $session->msg("d", "L'ajout a échoué.");
-            redirect('species.php',false);
+            redirect('isotypes.php',false);
         }
     } else {
         $session->msg("d", $errors);
-        redirect('species.php',false);
+        redirect('isotypes.php',false);
     }
 }
 ?>
@@ -35,7 +35,7 @@ if(isset($_POST['add_species'])){
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Espèces</span>
+                        <span>Isotypes</span>
                     </strong>
                 </div>
                 <div class="panel-body">
@@ -43,17 +43,17 @@ if(isset($_POST['add_species'])){
                         <thead>
                         <tr>
 
-                            <th class="text-center">Espèces</th>
+                            <th class="text-center">Isotypes</th>
                             <th class="text-center" >Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_species as $species):?>
+                        <?php foreach ($all_isotypes as $type):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($species['libelleEsp'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($type['libelleType'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="delete_species.php?IdentifiantEsp=<?php echo (int)$species['IdentifiantEsp'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                                        <a href="delete_isotype.php?IdentifiantType=<?php echo (int)$type['IdentifiantType'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
@@ -71,15 +71,15 @@ if(isset($_POST['add_species'])){
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Nouveau espèce</span>
+                        <span>Nouveau Isotype</span>
                     </strong>
                 </div>
                 <div class="panel-body">
                     <form method="post" action="#">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="species_name" placeholder="Espèce Libellé">
+                            <input type="text" class="form-control" name="isotype_name" placeholder="Isotype Libellé">
                         </div>
-                        <button type="submit" name="add_species" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" name="add_isotype" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>

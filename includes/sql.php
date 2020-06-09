@@ -33,11 +33,36 @@ function find_all_projects(){
 /*--------------------------------------------------------------*/
 /* Function for Finding all species
 /*--------------------------------------------------------------*/
-
 function find_all_species(){
     $sql = "SELECT * FROM especes";
     $result = find_by_sql($sql);
     return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all isotypes
+/*--------------------------------------------------------------*/
+function find_all_isotypes(){
+    $sql = "SELECT * FROM Types";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all clones
+/*--------------------------------------------------------------*/
+function find_all_clones(){
+    $sql = "SELECT * FROM clones";
+    $result = find_by_sql($sql);
+    return $result;
+
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all clones
+/*--------------------------------------------------------------*/
+function find_all_fluorochromes(){
+    $sql = "SELECT * FROM Fluorochromes";
+    $result = find_by_sql($sql);
+    return $result;
+
 }
 /*--------------------------------------------------------------*/
 /* Login with the data provided in $_POST,
@@ -57,5 +82,47 @@ function authenticate($username='', $password='') {
     }
     return false;
 }
-
+/*--------------------------------------------------------------*/
+/* Determine if database table exists
+/*--------------------------------------------------------------*/
+function tableExists($table){
+    global $db;
+    $table_exit = $db->query('SHOW TABLES FROM '.DB_NAME.' LIKE "'.$db->escape($table).'"');
+    if($table_exit) {
+        if($db->num_rows($table_exit) > 0)
+            return true;
+        else
+            return false;
+    }
+}
+/*--------------------------------------------------------------*/
+/*  Function for Find data from table by id
+/*--------------------------------------------------------------*/
+function find_by_id($table,$id,$idFieldName)
+{
+    global $db;
+    $id = (int)$id;
+    if(tableExists($table)){
+        $sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE {$db->escape($idFieldName)} = {$db->escape($id)} LIMIT 1");
+        if($result = $db->fetch_assoc($sql))
+            return $result;
+        else
+            return null;
+    }
+}
+/*--------------------------------------------------------------*/
+/* Function for Delete data from table by id
+/*--------------------------------------------------------------*/
+function delete_by_id($table,$id,$idFieldName)
+{
+    global $db;
+    if(tableExists($table))
+    {
+        $sql = "DELETE FROM ".$db->escape($table);
+        $sql .= " WHERE ".$db->escape($idFieldName)."=". $db->escape($id);
+        $sql .= " LIMIT 1";
+        $db->query($sql);
+        return ($db->affected_rows() === 1) ? true : false;
+    }
+}
 ?>
