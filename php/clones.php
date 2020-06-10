@@ -9,7 +9,7 @@ if(isset($_POST['add_clone'])){
     validate_fields($req_field);
     $clone_name = remove_junk($db->escape($_POST['clone_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO especes (libelleC) VALUES ('{$clone_name}')";
+        $sql  = "INSERT INTO clones (libelleC) VALUES ('{$clone_name}')";
         if($db->query($sql)){
             $session->msg("s", "Clone ajouté ");
             redirect('clones.php',false);

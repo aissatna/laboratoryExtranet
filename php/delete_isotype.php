@@ -10,7 +10,7 @@ if(!$isotype){
 }
 ?>
 <?php
-$delete_id = delete_by_id('types',(int)$species['IdentifiantType'],'IdentifiantType');
+$delete_id = delete_by_id('types',(int)$isotype['IdentifiantType'],'IdentifiantType');
 if($delete_id){
     $session->msg("s","Isotype supprimé.");
     redirect('isotypes.php');
