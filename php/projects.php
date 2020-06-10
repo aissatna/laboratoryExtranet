@@ -36,19 +36,19 @@ $all_projects = find_all_projects();
                     <?php foreach($all_projects as $project): ?>
                         <tr>
                             <td class="text-center">
-                                <?php echo first_character($project['nomP'])?>
+                                <?php echo first_character($project['NomP'])?>
                             </td>
                             <td class="text-center">
                                 <?php echo $project['EmailR']?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['dateDebutP']?>
+                                <?php echo $project['DateDebutP']?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['dateFinP']?>
+                                <?php echo $project['DateFinP']?>
                             </td>
                             <td class="text-center">
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Remove">
+                                <a href="delete_project.php?IdentifiantP=<?php echo (int)$project['IdentifiantP'];?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Remove">
                                     <i class="glyphicon glyphicon-remove"></i>
                                 </a>
                             </td>

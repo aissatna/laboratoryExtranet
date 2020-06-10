@@ -119,7 +119,7 @@ function delete_by_id($table,$id,$idFieldName)
     if(tableExists($table))
     {
         $sql = "DELETE FROM ".$db->escape($table);
-        $sql .= " WHERE ".$db->escape($idFieldName)."=". $db->escape($id);
+        $sql .= " WHERE ".$db->escape($idFieldName)." = ". $db->escape($id);
         $sql .= " LIMIT 1";
         $db->query($sql);
         return ($db->affected_rows() === 1) ? true : false;

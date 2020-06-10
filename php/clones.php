@@ -9,7 +9,7 @@ if(isset($_POST['add_clone'])){
     validate_fields($req_field);
     $clone_name = remove_junk($db->escape($_POST['clone_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO clones (libelleC) VALUES ('{$clone_name}')";
+        $sql  = "INSERT INTO clones (LibelleC) VALUES ('{$clone_name}')";
         if($db->query($sql)){
             $session->msg("s", "Clone ajouté ");
             redirect('clones.php',false);
@@ -50,7 +50,7 @@ if(isset($_POST['add_clone'])){
                         <tbody>
                         <?php foreach ($all_clones as $clone):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($clone['libelleC'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($clone['LibelleC'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="delete_clone.php?IdentifiantC=<?php echo (int)$clone['IdentifiantC'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">

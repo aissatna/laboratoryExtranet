@@ -9,7 +9,7 @@ if(isset($_POST['add_fluorochrome'])){
     validate_fields($req_field);
     $fluorochrome_name = remove_junk($db->escape($_POST['fluorochrome_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO fluorochromes (libelleFluo) VALUES ('{$fluorochrome_name}')";
+        $sql  = "INSERT INTO fluorochromes (LibelleFluo) VALUES ('{$fluorochrome_name}')";
         if($db->query($sql)){
             $session->msg("s", "Fluorochrome ajouté ");
             redirect('fluorochromes.php',false);
@@ -50,7 +50,7 @@ if(isset($_POST['add_fluorochrome'])){
                         <tbody>
                         <?php foreach ($all_Fluorochromes as $fluorochrome):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($fluorochrome['libelleFluo'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($fluorochrome['LibelleFluo'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="delete_fluorochrome.php?IdentifiantFluo=<?php echo (int)$fluorochrome['IdentifiantFluo'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">

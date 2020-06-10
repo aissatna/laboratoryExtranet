@@ -2,7 +2,6 @@
 require_once('../includes/load.php');
 ?>
 <?php
-echo $_GET['IdentifiantType'];
 $isotype = find_by_id('types',(int)$_GET['IdentifiantType'],'IdentifiantType');
 if(!$isotype){
     $session->msg("d","Isotype non trouvé .");

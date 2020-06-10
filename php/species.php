@@ -9,7 +9,7 @@ if(isset($_POST['add_species'])){
     validate_fields($req_field);
     $species_name = remove_junk($db->escape($_POST['species_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO especes (libelleEsp) VALUES ('{$species_name}')";
+        $sql  = "INSERT INTO especes (LibelleEsp) VALUES ('{$species_name}')";
         if($db->query($sql)){
             $session->msg("s", "Espèce ajoutée ");
             redirect('species.php',false);
@@ -50,7 +50,7 @@ if(isset($_POST['add_species'])){
                         <tbody>
                         <?php foreach ($all_species as $species):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($species['libelleEsp'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($species['LibelleEsp'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="delete_species.php?IdentifiantEsp=<?php echo (int)$species['IdentifiantEsp'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">

@@ -2,7 +2,6 @@
 require_once('../includes/load.php');
 ?>
 <?php
-echo $_GET['IdentifiantFluo'];
 $fluorochrome = find_by_id('fluorochromes',(int)$_GET['IdentifiantFluo'],'IdentifiantFluo');
 if(!$fluorochrome){
     $session->msg("d","Fluorochrome non trouvée .");

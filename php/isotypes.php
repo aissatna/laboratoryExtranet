@@ -9,7 +9,7 @@ if(isset($_POST['add_isotype'])){
     validate_fields($req_field);
     $isotype_name = remove_junk($db->escape($_POST['isotype_name']));
     if(empty($errors)){
-        $sql  = "INSERT INTO types (libelleType) VALUES ('{$isotype_name}')";
+        $sql  = "INSERT INTO types (LibelleType) VALUES ('{$isotype_name}')";
         if($db->query($sql)){
             $session->msg("s", "Isotype ajouté ");
             redirect('isotypes.php',false);
@@ -50,7 +50,7 @@ if(isset($_POST['add_isotype'])){
                         <tbody>
                         <?php foreach ($all_isotypes as $type):?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($type['libelleType'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($type['LibelleType'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="delete_isotype.php?IdentifiantType=<?php echo (int)$type['IdentifiantType'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
