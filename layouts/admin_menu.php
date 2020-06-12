@@ -41,4 +41,10 @@
             <span>Fluorochromes </span>
         </a>
     </li>
+    <li>
+        <a href="../php/providers.php">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Fournisseurs </span>
+        </a>
+    </li>
 </ul>

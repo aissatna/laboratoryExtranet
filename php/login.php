@@ -28,6 +28,7 @@ require_once('../includes/load.php');
                     <div class="form-group">
                         <label for="username" class="control-label">Username</label>
                         <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label">Password</label>

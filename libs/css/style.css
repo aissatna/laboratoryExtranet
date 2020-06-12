@@ -12,7 +12,11 @@ body {
     height: 100%;
     width: 100%;
 }
-
+.required-field{
+    color: red;
+    font-size: 16px;
+    margin: 0 5px;
+}
 /*--------------------------------------------------------------*/
 /* REUSABLE COMPONENTS */
 /*--------------------------------------------------------------*/
@@ -172,18 +176,19 @@ table .label {
 /* INDEX PAGE
 /*--------------------------------------------------------------*/
 #index-page{
-    background-image: linear-gradient(#B8C0CB, #B8C0CB);
+    background-image: linear-gradient(rgba(132, 136, 166, 0.56), rgba(132, 124, 145, 0.61));
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
+
 }
 
 #index-page .container-content {
     border: 0 solid #ffffff;
     padding: 30px 40px;
     margin-top: 20vh;
-    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 1);
+    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.6);
 }
 
 #index-page .btn {
@@ -214,17 +219,21 @@ table .label {
 /* LOGIN-PAGE
 /*--------------------------------------------------------------*/
 #login-page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/bg.jpg");
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/bg.jpg");*/
+    background-image:
+            linear-gradient(rgba(85, 90, 114, 0.65), rgba(126, 127, 126, 0.6)),
+            url('img/bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
+
 }
 #login-page .form-container {
     border: 0 solid #ffffff;
     padding: 30px 40px;
     margin-top: 20vh;
-    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 1);
+    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.5);
 }
 #login-page .btn{
     font-weight: bold;
@@ -416,7 +425,33 @@ table .label {
     left: 0;
     padding: 35px 15px 20px 15px;;
 }
+/*--------------------------------------------------------------*/
+/* add-project-page
+/*--------------------------------------------------------------*/
+.add-project-page{
+    width: 500px;
+    margin: 5px auto;
+    padding: 0 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
+}
+.add-project-page h3{
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
 
+}
+.add-project-page label{
+    font-weight: 300;
+    margin-left: 10px;
 
+}
+.add-project-page small{
+    display: inline-block;
+    margin-bottom: 15px;
 
-
+}

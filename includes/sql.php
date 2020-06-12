@@ -10,6 +10,7 @@ function find_by_sql($sql)
     $result_set = $db->while_loop($result);
     return $result_set;
 }
+
 /*--------------------------------------------------------------*/
 /* Function for Finding all antibodies
 /*--------------------------------------------------------------*/
@@ -22,11 +23,12 @@ function find_all_antibodies(){
     return $result;
 }
 /*--------------------------------------------------------------*/
-/* Function for Finding all projects
+/* Function for Finding all projects with team
 /*--------------------------------------------------------------*/
 
 function find_all_projects(){
-    $sql = "SELECT * FROM projets";
+    $sql = "SELECT * FROM projets P,travailler T,equipes E WHERE
+    P.IdentifiantP= T.IdentifiantP AND T.IdentifiantE = E.IdentifiantE;";
     $result = find_by_sql($sql);
     return $result;
 }
@@ -60,6 +62,24 @@ function find_all_clones(){
 /*--------------------------------------------------------------*/
 function find_all_fluorochromes(){
     $sql = "SELECT * FROM Fluorochromes";
+    $result = find_by_sql($sql);
+    return $result;
+
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all teams
+/*--------------------------------------------------------------*/
+function find_all_teams(){
+    $sql = "SELECT * FROM equipes";
+    $result = find_by_sql($sql);
+    return $result;
+
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all providers
+/*--------------------------------------------------------------*/
+function find_all_providers(){
+    $sql = "SELECT * FROM fournisseurs";
     $result = find_by_sql($sql);
     return $result;
 

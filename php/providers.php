@@ -1,7 +1,7 @@
 <?php ob_start();
-$page_title = 'Projets';
+$page_title = 'Fournisseurs';
 require_once('../includes/load.php');
-$all_projects = find_all_projects();
+$all_providers = find_all_providers();
 ?>
 <?php include_once('../layouts/header.php'); ?>
 <div class="row">
@@ -15,10 +15,10 @@ $all_projects = find_all_projects();
             <div class="panel-heading clearfix">
                 <strong>
                     <span class="glyphicon glyphicon-th"></span>
-                    <span>Projets</span>
+                    <span>Fournisseurs</span>
                 </strong>
                 <div class="pull-right">
-                    <a href="add_project.php" class="btn btn-primary">Nouveau projet</a>
+                    <a href="#" class="btn btn-primary">Nouveau Fournisseur</a>
                 </div>
             </div>
             <div class="panel-body">
@@ -26,39 +26,43 @@ $all_projects = find_all_projects();
                     <thead>
                     <tr>
                         <th class="text-center">Nom</th>
-                        <th class="text-center">Email responsable</th>
-                        <th class="text-center">Date début</th>
-                        <th class="text-center">Date fin</th>
-                        <th class="text-center">Equipe</th>
+                        <th class="text-center">Prénom</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Téléphone</th>
+                        <th class="text-center">Site Web</th>
+                        <th class="text-center">Liste des prix</th>
                         <th class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($all_projects as $project): ?>
+                    <?php foreach($all_providers as $provider): ?>
                         <tr>
                             <td class="text-center">
-                                <?php echo first_character($project['NomP'])?>
+                                <?php echo first_character($provider['NomF']);?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['EmailR']?>
+                                <?php echo first_character($provider['PrenomF']);?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['DateDebutP']?>
+                                <?php echo $provider['EmailF'];?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['DateFinP']?>
+                                <?php echo $provider['TelephoneF'];?>
                             </td>
                             <td class="text-center">
-                                <?php echo $project['NomE']?>
+                                <a href="<?php echo $provider['SiteWebF'];?>" target="_blank"><?php echo $provider['SiteWebF'];?></a>
+                            </td>
+                            <td class="text-center">
+                                <?php echo $provider['ListeDesPrix'];?>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                <a href="delete_project.php?IdentifiantP=<?php echo (int)$project['IdentifiantP'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                                <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
+                                    <a href="delete_provider.php?IdentifiantF=<?php echo (int)$provider['IdentifiantF'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
