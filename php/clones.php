@@ -8,20 +8,26 @@ if(isset($_POST['add_clone'])){
     $req_field = array('clone_name');
     validate_fields($req_field);
     $clone_name = remove_junk($db->escape($_POST['clone_name']));
-    if(empty($errors)){
-        $sql  = "INSERT INTO clones (LibelleC) VALUES ('{$clone_name}')";
-        if($db->query($sql)){
-            $session->msg("s", "Clone ajouté ");
-            redirect('clones.php',false);
+    $clone = find_by_field('clones',$clone_name,'LibelleC');
+    if (empty($clone)){
+        if(empty($errors)){
+            $sql  = "INSERT INTO clones (LibelleC) VALUES ('{$clone_name}')";
+            if($db->query($sql)){
+                $session->msg("s", "Clone ajouté ");
+                redirect('clones.php',false);
+            } else {
+                $session->msg("d", "L'ajout a échoué.");
+                redirect('clones.php',false);
+            }
         } else {
-            $session->msg("d", "L'ajout a échoué.");
+            $session->msg("d", $errors);
             redirect('clones.php',false);
         }
-    } else {
-        $session->msg("d", $errors);
+    }else {$session->msg("d", "Ce clone existe déjà , entrer un autre .");
         redirect('clones.php',false);
     }
 }
+
 ?>
 <?php include_once('../layouts/header.php'); ?>
     <div class="row">
@@ -39,7 +45,7 @@ if(isset($_POST['add_clone'])){
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="JS-data-table-clones">
                         <thead>
                         <tr>
 
@@ -53,8 +59,10 @@ if(isset($_POST['add_clone'])){
                                 <td class="text-center"><?php echo remove_junk(ucfirst($clone['LibelleC'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="delete_clone.php?IdentifiantC=<?php echo (int)$clone['IdentifiantC'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                            <span class="glyphicon glyphicon-trash"></span>
+                                        <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                           data-href="delete_clone.php?IdentifiantC=
+                                       <?php echo (int)$clone['IdentifiantC'];?>" data-toggle="modal"
+                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -84,5 +92,5 @@ if(isset($_POST['add_clone'])){
             </div>
         </div>
     </div>
-
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>

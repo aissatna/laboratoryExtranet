@@ -28,8 +28,9 @@ $all_antibodies = find_all_antibodies();
                     <tr>
 <!--                        <th class="text-center">Identifiant</th>-->
                         <th class="text-center">Désignation</th>
+                        <th class="text-center">Clone</th>
+                        <th class="text-center">Fournisseur</th>
                         <th class="text-center">Quantité stock</th>
-                        <th class="text-center">Seuil</th>
                         <th class="text-center">Etat stock</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -37,17 +38,22 @@ $all_antibodies = find_all_antibodies();
                     <tbody>
                     <?php foreach($all_antibodies as $antibody): ?>
                     <tr>
-                       <!-- <td class="text-center">
-                            <?php /*echo $antibody['IdentifiantA']*/?>
-                        </td>-->
                         <td class="text-center">
                             <?php echo first_character( $antibody['DesignationA'])?>
                         </td>
                         <td class="text-center">
-                            <?php echo $antibody['QuantiteStock']?>
+                            <?php echo first_character( $antibody['LibelleC'])?>
                         </td>
                         <td class="text-center">
-                            <?php echo $antibody['SeuilAlerte']?>
+                           <?php if (empty($antibody['SiteWebF'])):?>
+                               <?php echo first_character($antibody['PrenomF']).' '.strtoupper($antibody['NomF']) ?>
+                           <?php else:?>
+                               <a href="<?php echo $antibody['SiteWebF'];?>" target="_blank">
+                                   <?php echo first_character($antibody['PrenomF']).' '. strtoupper($antibody['NomF']);?></a>
+                            <?php endif;?>
+                        </td>
+                        <td class="text-center">
+                            <?php echo $antibody['QuantiteStock']?>
                         </td>
                         <td class="text-center">
                         <?php switch ($antibody['EtatStockA']):case "Bon": ?>

@@ -10,15 +10,16 @@
                 echo remove_junk($page_title);
             else echo "Stroma-Lab-Inventory";?>
     </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
 
 </head>
 <body>
 <?php  if ($session->isUserLoggedIn()): ?>
 <header id="header-page">
-    <div class="logo pull-left"> <a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger"></i></a> <span>Stroma-Lab-Inventory</span>
+    <div class="logo pull-left"> <a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger">
+            </i></a> <span>Stroma-Lab-Inventory</span>
     </div>
     <div class="header-content">
         <div class="header-date pull-left">

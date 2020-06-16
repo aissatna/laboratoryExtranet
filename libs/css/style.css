@@ -20,9 +20,12 @@ body {
 /*--------------------------------------------------------------*/
 /* REUSABLE COMPONENTS */
 /*--------------------------------------------------------------*/
-a {
+a{
     text-decoration: none;
     color: #777777;
+}
+a:hover {
+    text-decoration:red;
 }
 
 .jumbotron {

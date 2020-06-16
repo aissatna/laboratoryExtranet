@@ -22,7 +22,8 @@ $all_projects = find_all_projects();
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-hover">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="JS-data-table-projects">
                     <thead>
                     <tr>
                         <th class="text-center">Nom</th>
@@ -53,20 +54,46 @@ $all_projects = find_all_projects();
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                <a href="delete_project.php?IdentifiantP=<?php echo (int)$project['IdentifiantP'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                                <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                                    <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                       data-href="delete_project.php?IdentifiantP=
+                                       <?php echo (int)$project['IdentifiantP'];?>" data-toggle="modal"
+                                       data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
                                     <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
                     <?php endforeach;?>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!--*******************Modal*************************-->
+<!--<div class="modal fade " id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Voulez vous vraiment supprimer ce contenu ?.</p>
+                <p>Do you want to proceed?</p>
+                <p class="debug-url"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                <a class="btn btn-danger btn-ok">Oui</a>
+            </div>
+        </div>
+    </div>
+</div>-->
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>

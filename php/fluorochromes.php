@@ -8,17 +8,22 @@ if(isset($_POST['add_fluorochrome'])){
     $req_field = array('fluorochrome_name');
     validate_fields($req_field);
     $fluorochrome_name = remove_junk($db->escape($_POST['fluorochrome_name']));
-    if(empty($errors)){
-        $sql  = "INSERT INTO fluorochromes (LibelleFluo) VALUES ('{$fluorochrome_name}')";
-        if($db->query($sql)){
-            $session->msg("s", "Fluorochrome ajouté ");
-            redirect('fluorochromes.php',false);
+    $fluorochrome = find_by_field('Fluorochromes',$fluorochrome_name,'LibelleFluo');
+    if (empty($fluorochrome)){
+        if(empty($errors)){
+            $sql  = "INSERT INTO fluorochromes (LibelleFluo) VALUES ('{$fluorochrome_name}')";
+            if($db->query($sql)){
+                $session->msg("s", "Fluorochrome ajouté ");
+                redirect('fluorochromes.php',false);
+            } else {
+                $session->msg("d", "L'ajout a échoué.");
+                redirect('fluorochromes.php',false);
+            }
         } else {
-            $session->msg("d", "L'ajout a échoué.");
+            $session->msg("d", $errors);
             redirect('fluorochromes.php',false);
         }
-    } else {
-        $session->msg("d", $errors);
+    }else {$session->msg("d", "Ce fluorochorme existe déja , entrer un autre .");
         redirect('fluorochromes.php',false);
     }
 }
@@ -39,7 +44,7 @@ if(isset($_POST['add_fluorochrome'])){
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="JS-data-table-fluorochromes">
                         <thead>
                         <tr>
 
@@ -53,8 +58,10 @@ if(isset($_POST['add_fluorochrome'])){
                                 <td class="text-center"><?php echo remove_junk(ucfirst($fluorochrome['LibelleFluo'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="delete_fluorochrome.php?IdentifiantFluo=<?php echo (int)$fluorochrome['IdentifiantFluo'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                            <span class="glyphicon glyphicon-trash"></span>
+                                        <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                           data-href="delete_fluorochrome.php?IdentifiantFluo=
+                                       <?php echo (int)$fluorochrome['IdentifiantFluo'];?>" data-toggle="modal"
+                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -85,5 +92,5 @@ if(isset($_POST['add_fluorochrome'])){
             </div>
         </div>
     </div>
-
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>

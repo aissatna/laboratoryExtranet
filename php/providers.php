@@ -18,11 +18,11 @@ $all_providers = find_all_providers();
                     <span>Fournisseurs</span>
                 </strong>
                 <div class="pull-right">
-                    <a href="#" class="btn btn-primary">Nouveau Fournisseur</a>
+                    <a href="add_provider.php" class="btn btn-primary">Nouveau Fournisseur</a>
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="JS-data-table-providers">
                     <thead>
                     <tr>
                         <th class="text-center">Nom</th>
@@ -53,12 +53,14 @@ $all_providers = find_all_providers();
                                 <a href="<?php echo $provider['SiteWebF'];?>" target="_blank"><?php echo $provider['SiteWebF'];?></a>
                             </td>
                             <td class="text-center">
-                                <?php echo $provider['ListeDesPrix'];?>
+                                <a href ="../uploads/<?php echo $provider['ListeDesPrix'];?>" download ><?php echo $provider['ListeDesPrix'];?></a>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="delete_provider.php?IdentifiantF=<?php echo (int)$provider['IdentifiantF'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                        <i class="glyphicon glyphicon-remove"></i>
+                                    <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                       data-href="delete_provider.php?IdentifiantF=
+                                       <?php echo (int)$provider['IdentifiantF'];?>" data-toggle="modal"
+                                       data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                     </a>
                                     <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
                                         <i class="glyphicon glyphicon-pencil"></i>
@@ -73,4 +75,6 @@ $all_providers = find_all_providers();
         </div>
     </div>
 </div>
+
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>

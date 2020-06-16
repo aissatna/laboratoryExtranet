@@ -8,20 +8,26 @@ if(isset($_POST['add_species'])){
     $req_field = array('species_name');
     validate_fields($req_field);
     $species_name = remove_junk($db->escape($_POST['species_name']));
-    if(empty($errors)){
-        $sql  = "INSERT INTO especes (LibelleEsp) VALUES ('{$species_name}')";
-        if($db->query($sql)){
-            $session->msg("s", "Espèce ajoutée ");
-            redirect('species.php',false);
+    $species = find_by_field('especes',$species_name,'LibelleEsp');
+    if (empty($species)){
+        if(empty($errors)){
+            $sql  = "INSERT INTO especes (LibelleEsp) VALUES ('{$species_name}')";
+            if($db->query($sql)){
+                $session->msg("s", "Espèce ajoutée ");
+                redirect('species.php',false);
+            } else {
+                $session->msg("d", "L'ajout a échoué.");
+                redirect('species.php',false);
+            }
         } else {
-            $session->msg("d", "L'ajout a échoué.");
+            $session->msg("d", $errors);
             redirect('species.php',false);
         }
-    } else {
-        $session->msg("d", $errors);
+    }else {$session->msg("d", "Cette espèce existe déja . entrer une autre .");
         redirect('species.php',false);
     }
 }
+
 ?>
 <?php include_once('../layouts/header.php'); ?>
     <div class="row">
@@ -32,17 +38,16 @@ if(isset($_POST['add_species'])){
     <div class="row">
         <div class="col-md-7">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading clearfix">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
                         <span>Espèces</span>
                     </strong>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
+                <div class="panel-body clearfix">
+                    <table class="table table-bordered table-hover"id="JS-data-table-species">
                         <thead>
                         <tr>
-
                             <th class="text-center">Espèces</th>
                             <th class="text-center" >Actions</th>
                         </tr>
@@ -53,8 +58,10 @@ if(isset($_POST['add_species'])){
                                 <td class="text-center"><?php echo remove_junk(ucfirst($species['LibelleEsp'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="delete_species.php?IdentifiantEsp=<?php echo (int)$species['IdentifiantEsp'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
-                                            <span class="glyphicon glyphicon-trash"></span>
+                                        <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                           data-href="delete_species.php?IdentifiantEsp=
+                                       <?php echo (int)$species['IdentifiantEsp'];?>" data-toggle="modal"
+                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -86,4 +93,5 @@ if(isset($_POST['add_species'])){
         </div>
     </div>
 
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>
