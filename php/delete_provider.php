@@ -2,7 +2,6 @@
 require_once('../includes/load.php');
 ?>
 <?php
-echo $_GET['IdentifiantF'];
 $provider = find_by_id('fournisseurs',(int)$_GET['IdentifiantF'],'IdentifiantF');
 if(!$provider){
     $session->msg("d","Fournisseur non trouvée .");

@@ -23,7 +23,7 @@ $all_antibodies = find_all_antibodies();
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="JS-data-table-antibodies"">
                     <thead>
                     <tr>
 <!--                        <th class="text-center">Identifiant</th>-->
@@ -72,14 +72,18 @@ $all_antibodies = find_all_antibodies();
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-info" data-toggle="tooltip" title="Details">
+                                <a href="tubes.php?IdentifiantA=<?php echo (int)$antibody['IdentifiantA'];?>"
+                                   class="btn btn-sm btn-info" data-toggle="tooltip" title="Details">
                                     <i class="glyphicon glyphicon-eye-open"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit">
+                                <a href="edit_stock.php?IdentifiantA=<?php echo (int)$antibody['IdentifiantA'];?>"
+                                    class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Remove">
-                                    <i class="glyphicon glyphicon-remove"></i>
+                                <a href="#" class="btn btn-sm btn-danger" title="Remove"
+                                   data-href="delete_clone.php?IdentifiantA=
+                                       <?php echo (int)$antibody['IdentifiantA'];?>" data-toggle="modal"
+                                   data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                 </a>
                             </div>
                         </td>
@@ -91,4 +95,5 @@ $all_antibodies = find_all_antibodies();
         </div>
     </div>
 </div>
+<?php include_once('../layouts/delete-modal.php'); ?>
 <?php include_once('../layouts/footer.php'); ?>

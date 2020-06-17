@@ -169,7 +169,7 @@ function delete_by_id($table, $id, $idFieldName)
         return ($db->affected_rows() === 1) ? true : false;
     }
 }
-
+/*6666666666666666666666666666666666*/
 /*--------------------------------------------------------------*/
 /*  Fonction pour vérifier l'existance d'un champs
 /*--------------------------------------------------------------*/
@@ -183,6 +183,33 @@ function find_by_field($table, $filed, $FieldName)
         else
             return null;
     }
+}
+
+/*--------------------------------------------------------------*/
+/*  Function for Find Max id  from table
+/*--------------------------------------------------------------*/
+function find_max_id($table,$idFieldName)
+{
+    global $db;
+    if(tableExists($table)){
+        $sql = $db->query("SELECT Max($idFieldName) as 'MaxId'FROM {$db->escape($table)}  LIMIT 1");
+        if($result = $db->fetch_assoc($sql))
+            return $result;
+        else
+            return null;
+    }
+}
+/*--------------------------------------------------------------*/
+/* Function for Finding all tubes
+/*--------------------------------------------------------------*/
+function find_all_tubes($IdentifiantA){
+    $sql = "SELECT T.referenceT ,C.volume,T.EtatTube
+            FROM   tubes T , contenir C
+            WHERE  T.referenceT = C.referenceT
+            AND    C.IdentifiantA = $IdentifiantA
+            AND T.EtatTube <>'vide'";
+    $result = find_by_sql($sql);
+    return $result;
 }
 
 ?>

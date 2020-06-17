@@ -21,7 +21,7 @@ if(isset($_POST['add-provider'])){
     $req_fields = array('provider-lastname','provider-firstname','provider-email');
     validate_fields($req_fields);
     $file = find_by_field('fournisseurs',$fileName,'ListeDesPrix');
-    if (empty($file))
+    if (empty($file) or $fileName ==="")
     {
         if(empty($errors)){
             $p_lastname = remove_junk($db->escape($_POST['provider-lastname']));
