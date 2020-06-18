@@ -2,14 +2,14 @@
 require_once('../includes/load.php');
 ?>
 <?php
-$provider = find_by_id('projets',(int)$_GET['IdentifiantP'],'IdentifiantP');
-if(!$provider){
+$project = find_by_id('projets',(int)$_GET['IdentifiantP'],'IdentifiantP');
+if(!$project){
     $session->msg("d","projet non trouvé .");
     redirect('projects.php');
 }
 ?>
 <?php
-$delete_id = delete_by_id('projets',(int)$provider['IdentifiantP'],'IdentifiantP');
+$delete_id = delete_by_id('projets',(int)$project['IdentifiantP'],'IdentifiantP');
 if($delete_id){
     $session->msg("s","projet supprimé.");
     redirect('projects.php');

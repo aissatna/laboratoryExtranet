@@ -23,7 +23,7 @@ $all_antibodies = find_all_antibodies();
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-hover" id="JS-data-table-antibodies"">
+                <table class="table table-bordered table-hover" id="JS-data-table-antibodies">
                     <thead>
                     <tr>
 <!--                        <th class="text-center">Identifiant</th>-->
@@ -81,7 +81,7 @@ $all_antibodies = find_all_antibodies();
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
                                 <a href="#" class="btn btn-sm btn-danger" title="Remove"
-                                   data-href="delete_clone.php?IdentifiantA=
+                                   data-href="delete_antibody.php?IdentifiantA=
                                        <?php echo (int)$antibody['IdentifiantA'];?>" data-toggle="modal"
                                    data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                 </a>

@@ -9,7 +9,7 @@ if(!$antibody){
 }
 ?>
 <?php
-$delete_id = delete_by_id('anticorps',(int)$clone['IdentifiantA'],'IdentifiantA');
+$delete_id = delete_by_id('anticorps',(int)$antibody['IdentifiantA'],'IdentifiantA');
 if($delete_id){
     $session->msg("s","anticorps supprimé.");
     redirect('antibodies.php');

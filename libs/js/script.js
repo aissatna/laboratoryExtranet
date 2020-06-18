@@ -35,7 +35,8 @@ $(document).ready(function(){
         '#JS-data-table-types,' +
         '#JS-data-table-fluorochromes,' +
         '#JS-data-table-providers,' +
-        '#JS-data-table-projects')
+        '#JS-data-table-projects,' +
+        '#JS-data-table-antibodies')
         .each(function () {
             $(this).DataTable();
         })

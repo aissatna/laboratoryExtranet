@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 12 juin 2020 à 05:52
+-- Généré le : jeu. 18 juin 2020 à 04:22
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.2
 
@@ -109,8 +109,10 @@ CREATE TABLE `contenir` (
 INSERT INTO `contenir` (`ReferenceT`, `Volume`, `IdentifiantA`) VALUES
 (1, 34, 1),
 (1, 10, 2),
-(35, 40, 3),
-(36, 54, 5);
+(1, 0, 4),
+(35, 95, 4),
+(36, 54, 5),
+(37, 40, 3);
 
 -- --------------------------------------------------------
 
@@ -285,13 +287,13 @@ CREATE TABLE `fournisseurs` (
 
 INSERT INTO `fournisseurs` (`IdentifiantF`, `NomF`, `PrenomF`, `EmailF`, `TelephoneF`, `SiteWebF`, `ListeDesPrix`) VALUES
 (2, 'dufour', 'laurent', 'laurentdufour@gmail.com', '0667897654', 'http://dedalus.fr', ''),
-(4, 'Martin ', 'Jean', 'martin.jean@gmail.com', '0677874355', '', ''),
+(4, 'Martin ', 'Jean', 'martin.jean@gmail.com', '0677874355', 'https://www.ut-capitole.fr', ''),
 (5, 'Bernard ', 'Marie', 'marie.bernard@gmail.com', '0765431123', 'www.mariemag.com', ''),
 (6, 'Thomas ', 'Pierre', 'thomas.pierre@gmail.com', '0677899954', '', ''),
 (7, 'Durand ', 'Jeanne', 'durand.jeanne@gmail.com', '0537981187', 'www.bioanti.fr', ''),
-(8, 'Robert', 'Philippe', 'philipe67@gmail.com', '0678545567', '', ''),
 (9, 'Moreau', 'Catherine', 'morceau.4cat@gmail.com', '0788123444', 'www.geniticsfourn.fr', ''),
-(11, 'Moreau ', 'Madeleine', 'madeleine.morceau@gmail.com', '0677543211', 'www.logomagazin.fr', '');
+(11, 'Moreau ', 'Madeleine', 'madeleine.morceau@gmail.com', '0677543211', 'www.logomagazin.fr', ''),
+(18, 'AISSAT', 'Nabil', 'aissatnabil11@gmail.com', '', 'http://www.google.fr', 'CV_Nabil_AISSAT_Job.pdf');
 
 -- --------------------------------------------------------
 
@@ -356,7 +358,7 @@ CREATE TABLE `projets` (
 INSERT INTO `projets` (`IdentifiantP`, `NomP`, `EmailR`, `DateDebutP`, `DateFinP`) VALUES
 (1, 'technologie génitics', 'pierre.marron6@gmail.com', '2020-05-07', '2020-06-25'),
 (2, 'l\'anapathe', 'lina.duval@gmail.com', '2020-05-03', '2020-06-27'),
-(3, 'Hybridomes', 'meryem.dufour@gmail.com', '2020-06-26', '2020-08-21');
+(19, 'aaa', 'aissatnabil11@gmail.com', '2020-06-18', '2020-06-18');
 
 -- --------------------------------------------------------
 
@@ -396,9 +398,8 @@ CREATE TABLE `travailler` (
 
 INSERT INTO `travailler` (`IdentifiantE`, `IdentifiantP`) VALUES
 (1, 2),
-(1, 3),
-(2, 1),
-(2, 3);
+(1, 19),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -409,19 +410,20 @@ INSERT INTO `travailler` (`IdentifiantE`, `IdentifiantP`) VALUES
 CREATE TABLE `tubes` (
   `ReferenceT` int(11) NOT NULL,
   `IdentifiantL` int(11) NOT NULL,
-  `TailleT` int(11) NOT NULL
+  `TailleT` int(11) NOT NULL,
+  `EtatTube` enum('vide','ouvert','ferme') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tubes`
 --
 
-INSERT INTO `tubes` (`ReferenceT`, `IdentifiantL`, `TailleT`) VALUES
-(1, 1, 15),
-(35, 2, 33),
-(36, 3, 50),
-(37, 5, 112),
-(38, 4, 86);
+INSERT INTO `tubes` (`ReferenceT`, `IdentifiantL`, `TailleT`, `EtatTube`) VALUES
+(1, 1, 15, 'vide'),
+(35, 2, 33, 'ouvert'),
+(36, 3, 50, 'ferme'),
+(37, 5, 112, 'ferme'),
+(38, 4, 86, 'ferme');
 
 -- --------------------------------------------------------
 
@@ -477,17 +479,17 @@ INSERT INTO `types` (`IdentifiantType`, `LibelleType`) VALUES
 
 CREATE TABLE `utiliser` (
   `IdentifiantP` int(11) NOT NULL,
-  `IdentifiantA` int(11) NOT NULL
+  `IdentifiantA` int(11) NOT NULL,
+  `DatePrelevement` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utiliser`
 --
 
-INSERT INTO `utiliser` (`IdentifiantP`, `IdentifiantA`) VALUES
-(1, 1),
-(2, 2),
-(3, 1);
+INSERT INTO `utiliser` (`IdentifiantP`, `IdentifiantA`, `DatePrelevement`) VALUES
+(1, 1, '0000-00-00'),
+(2, 2, '0000-00-00');
 
 --
 -- Index pour les tables déchargées
@@ -563,9 +565,7 @@ ALTER TABLE `fournir`
 -- Index pour la table `fournisseurs`
 --
 ALTER TABLE `fournisseurs`
-  ADD PRIMARY KEY (`IdentifiantF`),
-  ADD UNIQUE KEY `emailF` (`EmailF`),
-  ADD UNIQUE KEY `telephoneF` (`TelephoneF`);
+  ADD PRIMARY KEY (`IdentifiantF`);
 
 --
 -- Index pour la table `gestionnaire`
@@ -635,13 +635,13 @@ ALTER TABLE `utiliser`
 -- AUTO_INCREMENT pour la table `anticorps`
 --
 ALTER TABLE `anticorps`
-  MODIFY `IdentifiantA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IdentifiantA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `clones`
 --
 ALTER TABLE `clones`
-  MODIFY `IdentifiantC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IdentifiantC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `equipes`
@@ -653,19 +653,19 @@ ALTER TABLE `equipes`
 -- AUTO_INCREMENT pour la table `especes`
 --
 ALTER TABLE `especes`
-  MODIFY `IdentifiantEsp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IdentifiantEsp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `fluorochromes`
 --
 ALTER TABLE `fluorochromes`
-  MODIFY `IdentifiantFluo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `IdentifiantFluo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `fournisseurs`
 --
 ALTER TABLE `fournisseurs`
-  MODIFY `IdentifiantF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdentifiantF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `gestionnaire`
@@ -683,7 +683,7 @@ ALTER TABLE `lots`
 -- AUTO_INCREMENT pour la table `projets`
 --
 ALTER TABLE `projets`
-  MODIFY `IdentifiantP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdentifiantP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `tubes`
@@ -695,7 +695,7 @@ ALTER TABLE `tubes`
 -- AUTO_INCREMENT pour la table `types`
 --
 ALTER TABLE `types`
-  MODIFY `IdentifiantType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdentifiantType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées

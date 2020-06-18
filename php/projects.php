@@ -38,9 +38,6 @@ $all_projects = find_all_projects();
                     <?php foreach($all_projects as $project): ?>
                         <tr>
                             <td class="text-center">
-                                <?php echo ($project['IdentifiantP'])?>
-                            </td>
-                            <td class="text-center">
                                 <?php echo first_character($project['NomP'])?>
                             </td>
                             <td class="text-center">
@@ -62,7 +59,8 @@ $all_projects = find_all_projects();
                                        <?php echo (int)$project['IdentifiantP'];?>" data-toggle="modal"
                                        data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit">
+                                    <a href="edit_project.php?Id=<?php echo (int)$project['IdentifiantP'];?>"
+                                       class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
                                 </div>
