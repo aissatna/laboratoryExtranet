@@ -12,20 +12,23 @@ body {
     height: 100%;
     width: 100%;
 }
-.required-field{
+
+.required-field {
     color: red;
     font-size: 16px;
     margin: 0 5px;
 }
+
 /*--------------------------------------------------------------*/
 /* REUSABLE COMPONENTS */
 /*--------------------------------------------------------------*/
-a{
+a {
     text-decoration: none;
     color: #777777;
 }
+
 a:hover {
-    text-decoration:red;
+    text-decoration: red;
 }
 
 .jumbotron {
@@ -178,7 +181,7 @@ table .label {
 /*--------------------------------------------------------------*/
 /* INDEX PAGE
 /*--------------------------------------------------------------*/
-#index-page{
+#index-page {
     background-image: linear-gradient(rgba(132, 136, 166, 0.56), rgba(132, 124, 145, 0.61));
     background-size: cover;
     background-position: center;
@@ -210,10 +213,12 @@ table .label {
     font-weight: bold;
     text-shadow: 0 1px 1px #888;
 }
-#index-page .btn:hover{
+
+#index-page .btn:hover {
     background-color: #17a2b8;
 }
-#index-page img{
+
+#index-page img {
     height: 100px;
     width: auto;
 }
@@ -223,22 +228,23 @@ table .label {
 /*--------------------------------------------------------------*/
 #login-page {
     /*background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/bg.jpg");*/
-    background-image:
-            linear-gradient(rgba(85, 90, 114, 0.65), rgba(126, 127, 126, 0.6)),
-            url('img/bg.jpg');
+    background-image: linear-gradient(rgba(85, 90, 114, 0.65), rgba(126, 127, 126, 0.6)),
+    url('img/bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
 
 }
+
 #login-page .form-container {
     border: 0 solid #ffffff;
     padding: 30px 40px;
     margin-top: 20vh;
     box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.5);
 }
-#login-page .btn{
+
+#login-page .btn {
     font-weight: bold;
     border-radius: 6px;
     line-height: 20px;
@@ -247,7 +253,7 @@ table .label {
     text-shadow: 0 1px 1px #888;
 }
 
-#login-page .btn:hover{
+#login-page .btn:hover {
     background-color: #17a2b8;
 }
 
@@ -256,7 +262,7 @@ table .label {
 /*--------------------------------------------------------------*/
 #header-page {
     position: fixed;
-    z-index: 99;
+    z-index: 100;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -358,7 +364,7 @@ table .label {
 /*---------------- sidebar-----------------*/
 .sidebar {
     position: fixed;
-    z-index: 10;
+    z-index: 20;
     left: 0;
     top: 0;
     padding: 65px 0 0;
@@ -428,10 +434,11 @@ table .label {
     left: 0;
     padding: 35px 15px 20px 15px;;
 }
+
 /*--------------------------------------------------------------*/
 /* add-project-page
 /*--------------------------------------------------------------*/
-.add-project-page{
+.add-project-page {
     width: 500px;
     margin: 5px auto;
     padding: 0 10px;
@@ -439,7 +446,8 @@ table .label {
     border: 1px solid #f2f2f2;
     border-radius: 6px;
 }
-.add-project-page h3{
+
+.add-project-page h3 {
     font-weight: 300;
     font-size: 18px;
     margin-bottom: 5px;
@@ -448,12 +456,14 @@ table .label {
     padding: 10px;
 
 }
-.add-project-page label{
+
+.add-project-page label {
     font-weight: 300;
     margin-left: 10px;
 
 }
-.add-project-page small{
+
+.add-project-page small {
     display: inline-block;
     margin-bottom: 15px;
 

@@ -4,27 +4,28 @@ require_once('../includes/load.php');
 $all_clones = find_all_clones();
 ?>
 <?php
-if(isset($_POST['add_clone'])){
+if (isset($_POST['add_clone'])) {
     $req_field = array('clone_name');
     validate_fields($req_field);
     $clone_name = remove_junk($db->escape($_POST['clone_name']));
-    $clone = find_by_field('clones',$clone_name,'LibelleC');
-    if (empty($clone)){
-        if(empty($errors)){
-            $sql  = "INSERT INTO clones (LibelleC) VALUES ('{$clone_name}')";
-            if($db->query($sql)){
+    $clone = find_by_field('clones', $clone_name, 'LibelleC');
+    if (empty($clone)) {
+        if (empty($errors)) {
+            $sql = "INSERT INTO clones (LibelleC) VALUES ('{$clone_name}')";
+            if ($db->query($sql)) {
                 $session->msg("s", "Clone ajouté ");
-                redirect('clones.php',false);
+                redirect('clones.php', false);
             } else {
                 $session->msg("d", "L'ajout a échoué.");
-                redirect('clones.php',false);
+                redirect('clones.php', false);
             }
         } else {
             $session->msg("d", $errors);
-            redirect('clones.php',false);
+            redirect('clones.php', false);
         }
-    }else {$session->msg("d", "Ce clone existe déjà , entrer un autre .");
-        redirect('clones.php',false);
+    } else {
+        $session->msg("d", "Ce clone existe déjà , entrer un autre .");
+        redirect('clones.php', false);
     }
 }
 
@@ -50,18 +51,18 @@ if(isset($_POST['add_clone'])){
                         <tr>
 
                             <th class="text-center">clones</th>
-                            <th class="text-center" >Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_clones as $clone):?>
+                        <?php foreach ($all_clones as $clone): ?>
                             <tr>
                                 <td class="text-center"><?php echo remove_junk(ucfirst($clone['LibelleC'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_clone.php?IdentifiantC=
-                                       <?php echo (int)$clone['IdentifiantC'];?>" data-toggle="modal"
+                                       <?php echo (int)$clone['IdentifiantC']; ?>" data-toggle="modal"
                                            data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>

@@ -28,19 +28,19 @@ $all_tubes = find_all_tubes((int)$_GET['IdentifiantA']);
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($all_tubes as $tube): ?>
+                    <?php foreach ($all_tubes as $tube): ?>
                         <tr>
                             <td class="text-center">
-                                <?php echo $tube['referenceT']?>
+                                <?php echo $tube['referenceT'] ?>
                             </td>
                             <td class="text-center">
-                                <?php echo $tube['volume']?>
+                                <?php echo $tube['volume'] ?>
                             </td>
                             <td class="text-center">
-                                <?php echo first_character( $tube['EtatTube'])?>
+                                <?php echo first_character($tube['EtatTube']) ?>
                             </td>
                         </tr>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

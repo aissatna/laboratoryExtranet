@@ -36,6 +36,12 @@
         </a>
     </li>
     <li>
+        <a href="../php/teams.php">
+            <i class="glyphicon glyphicon-th-large"></i>
+            <span>Equipes </span>
+        </a>
+    </li>
+    <li>
         <a href="../php/fluorochromes.php">
             <i class="glyphicon glyphicon-plus"></i>
             <span>Fluorochromes </span>

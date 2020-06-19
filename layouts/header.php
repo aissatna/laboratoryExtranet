@@ -7,60 +7,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         <?php if (!empty($page_title))
-                echo remove_junk($page_title);
-            else echo "Stroma-Lab-Inventory";?>
+            echo remove_junk($page_title);
+        else echo "Stroma-Lab-Inventory"; ?>
     </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
 
 </head>
 <body>
-<?php  if ($session->isUserLoggedIn()): ?>
-<header id="header-page">
-    <div class="logo pull-left"> <a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger">
-            </i></a> <span>Stroma-Lab-Inventory</span>
-    </div>
-    <div class="header-content">
-        <div class="header-date pull-left">
-            <strong><?php echo date("F j, Y, g:i a");?></strong>
+<?php if ($session->isUserLoggedIn()): ?>
+    <header id="header-page">
+        <div class="logo pull-left"><a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger">
+                </i></a> <span>Stroma-Lab-Inventory</span>
         </div>
-        <div class="pull-right clearfix" >
-            <ul class="info-menu list-inline list-unstyled">
-                <li class="profile">
-                    <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
-                        <img src="../uploads/no_image.jpg" alt="user-image" class="img-circle img-inline">
-                        <span>Admin <i class="caret"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-user"></i>
-                                Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" title="edit account">
-                                <i class="glyphicon glyphicon-cog"></i>
-                                Settings
-                            </a>
-                        </li>
-                        <li class="last">
-                            <a href="../php/logout.php">
-                                <i class="glyphicon glyphicon-off"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="header-content">
+            <div class="header-date pull-left">
+                <strong><?php echo date("F j, Y, g:i a"); ?></strong>
+            </div>
+            <div class="pull-right clearfix">
+                <ul class="info-menu list-inline list-unstyled">
+                    <li class="profile">
+                        <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
+                            <img src="../uploads/no_image.jpg" alt="user-image" class="img-circle img-inline">
+                            <span>Admin <i class="caret"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="edit account">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="../php/logout.php">
+                                    <i class="glyphicon glyphicon-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
     <div class="sidebar" id="js__sidebar">
         <!-- admin menu -->
-        <?php include_once('admin_menu.php');?>
+        <?php include_once('admin_menu.php'); ?>
     </div>
-<?php endif;?>
-    <div class="main-page" id="js__main-page">
+<?php endif; ?>
+<div class="main-page" id="js__main-page">
     <div class="container-fluid">

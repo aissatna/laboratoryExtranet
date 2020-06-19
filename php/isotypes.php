@@ -4,27 +4,28 @@ require_once('../includes/load.php');
 $all_isotypes = find_all_isotypes();
 ?>
 <?php
-if(isset($_POST['add_isotype'])){
+if (isset($_POST['add_isotype'])) {
     $req_field = array('isotype_name');
     validate_fields($req_field);
     $isotype_name = remove_junk($db->escape($_POST['isotype_name']));
-    $isotype = find_by_field('types',$isotype_name,'LibelleType');
-    if (empty($isotype)){
-        if(empty($errors)){
-            $sql  = "INSERT INTO types (LibelleType) VALUES ('{$isotype_name}')";
-            if($db->query($sql)){
+    $isotype = find_by_field('types', $isotype_name, 'LibelleType');
+    if (empty($isotype)) {
+        if (empty($errors)) {
+            $sql = "INSERT INTO types (LibelleType) VALUES ('{$isotype_name}')";
+            if ($db->query($sql)) {
                 $session->msg("s", "Isotype ajouté ");
-                redirect('isotypes.php',false);
+                redirect('isotypes.php', false);
             } else {
                 $session->msg("d", "L'ajout a échoué.");
-                redirect('isotypes.php',false);
+                redirect('isotypes.php', false);
             }
         } else {
             $session->msg("d", $errors);
-            redirect('isotypes.php',false);
+            redirect('isotypes.php', false);
         }
-    }else {$session->msg("d", " Ce isotype existe déja , entrer un autre .");
-        redirect('isotypes.php',false);
+    } else {
+        $session->msg("d", " Ce isotype existe déja , entrer un autre .");
+        redirect('isotypes.php', false);
     }
 }
 ?>
@@ -44,23 +45,23 @@ if(isset($_POST['add_isotype'])){
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-hover" id= "JS-data-table-types">
+                    <table class="table table-bordered table-hover" id="JS-data-table-types">
                         <thead>
                         <tr>
 
                             <th class="text-center">Isotypes</th>
-                            <th class="text-center" >Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_isotypes as $type):?>
+                        <?php foreach ($all_isotypes as $type): ?>
                             <tr>
                                 <td class="text-center"><?php echo remove_junk(ucfirst($type['LibelleType'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_isotype.php?IdentifiantType=
-                                       <?php echo (int)$type['IdentifiantType'];?>" data-toggle="modal"
+                                       <?php echo (int)$type['IdentifiantType']; ?>" data-toggle="modal"
                                            data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>

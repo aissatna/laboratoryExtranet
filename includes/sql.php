@@ -17,13 +17,15 @@ function find_by_sql($sql)
 
 function find_all_antibodies()
 {
-    $sql = "SELECT frs.identifiantF,frs.NomF,frs.PrenomF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,C.LibelleC,(SELECT SUM(C.volume) FROM contenir C WHERE C.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock',A.SeuilAlerte,A.EtatStockA
+    $sql = "SELECT frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,C.LibelleC,
+          (SELECT SUM(C.volume) FROM contenir C WHERE C.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock',
+          A.SeuilAlerte,A.EtatStockA
           FROM anticorps A,fournir f ,fournisseurs frs ,clones C ,cloneanticorps CA
           WHERE A.IdentifiantA = F.IdentifiantA
           AND F.IdentifiantF = Frs.IdentifiantF
           AND A.IdentifiantA = CA.IdentifiantA
           AND CA.IdentifiantC =C.IdentifiantC
-          GROUP BY  frs.NomF ,A.IdentifiantA,A.DesignationA,A.SeuilAlerte,A.EtatStockA";
+          GROUP BY  frs.RaisonSocialeF ,A.IdentifiantA,A.DesignationA,A.SeuilAlerte,A.EtatStockA";
     $result = find_by_sql($sql);
     return $result;
 }
@@ -92,7 +94,6 @@ function find_all_teams()
     return $result;
 
 }
-
 /*--------------------------------------------------------------*/
 /* Function for Finding all providers
 /*--------------------------------------------------------------*/
@@ -169,9 +170,9 @@ function delete_by_id($table, $id, $idFieldName)
         return ($db->affected_rows() === 1) ? true : false;
     }
 }
-/*6666666666666666666666666666666666*/
+
 /*--------------------------------------------------------------*/
-/*  Fonction pour vérifier l'existance d'un champs
+/*  Function to check the existence of a field
 /*--------------------------------------------------------------*/
 function find_by_field($table, $filed, $FieldName)
 {
@@ -188,21 +189,23 @@ function find_by_field($table, $filed, $FieldName)
 /*--------------------------------------------------------------*/
 /*  Function for Find Max id  from table
 /*--------------------------------------------------------------*/
-function find_max_id($table,$idFieldName)
+function find_max_id($table, $idFieldName)
 {
     global $db;
-    if(tableExists($table)){
+    if (tableExists($table)) {
         $sql = $db->query("SELECT Max($idFieldName) as 'MaxId'FROM {$db->escape($table)}  LIMIT 1");
-        if($result = $db->fetch_assoc($sql))
+        if ($result = $db->fetch_assoc($sql))
             return $result;
         else
             return null;
     }
 }
+
 /*--------------------------------------------------------------*/
-/* Function for Finding all tubes
+/* Function for Finding all tubes of antibody
 /*--------------------------------------------------------------*/
-function find_all_tubes($IdentifiantA){
+function find_all_tubes($IdentifiantA)
+{
     $sql = "SELECT T.referenceT ,C.volume,T.EtatTube
             FROM   tubes T , contenir C
             WHERE  T.referenceT = C.referenceT

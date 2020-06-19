@@ -4,27 +4,28 @@ require_once('../includes/load.php');
 $all_species = find_all_species();
 ?>
 <?php
-if(isset($_POST['add_species'])){
+if (isset($_POST['add_species'])) {
     $req_field = array('species_name');
     validate_fields($req_field);
     $species_name = remove_junk($db->escape($_POST['species_name']));
-    $species = find_by_field('especes',$species_name,'LibelleEsp');
-    if (empty($species)){
-        if(empty($errors)){
-            $sql  = "INSERT INTO especes (LibelleEsp) VALUES ('{$species_name}')";
-            if($db->query($sql)){
+    $species = find_by_field('especes', $species_name, 'LibelleEsp');
+    if (empty($species)) {
+        if (empty($errors)) {
+            $sql = "INSERT INTO especes (LibelleEsp) VALUES ('{$species_name}')";
+            if ($db->query($sql)) {
                 $session->msg("s", "Espèce ajoutée ");
-                redirect('species.php',false);
+                redirect('species.php', false);
             } else {
                 $session->msg("d", "L'ajout a échoué.");
-                redirect('species.php',false);
+                redirect('species.php', false);
             }
         } else {
             $session->msg("d", $errors);
-            redirect('species.php',false);
+            redirect('species.php', false);
         }
-    }else {$session->msg("d", "Cette espèce existe déja . entrer une autre .");
-        redirect('species.php',false);
+    } else {
+        $session->msg("d", "Cette espèce existe déja . entrer une autre .");
+        redirect('species.php', false);
     }
 }
 
@@ -45,22 +46,22 @@ if(isset($_POST['add_species'])){
                     </strong>
                 </div>
                 <div class="panel-body clearfix">
-                    <table class="table table-bordered table-hover"id="JS-data-table-species">
+                    <table class="table table-bordered table-hover" id="JS-data-table-species">
                         <thead>
                         <tr>
                             <th class="text-center">Espèces</th>
-                            <th class="text-center" >Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_species as $species):?>
+                        <?php foreach ($all_species as $species): ?>
                             <tr>
                                 <td class="text-center"><?php echo remove_junk(ucfirst($species['LibelleEsp'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_species.php?IdentifiantEsp=
-                                       <?php echo (int)$species['IdentifiantEsp'];?>" data-toggle="modal"
+                                       <?php echo (int)$species['IdentifiantEsp']; ?>" data-toggle="modal"
                                            data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>

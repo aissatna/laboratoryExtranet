@@ -1,33 +1,34 @@
 <?php ob_start();
-$page_title = 'Fluorochromes';
+$page_title = 'Equipes';
 require_once('../includes/load.php');
-$all_Fluorochromes = find_all_fluorochromes();
+$all_teams = find_all_teams();
 ?>
 <?php
-if (isset($_POST['add_fluorochrome'])) {
-    $req_field = array('fluorochrome_name');
+if (isset($_POST['add_team'])) {
+    $req_field = array('team_name');
     validate_fields($req_field);
-    $fluorochrome_name = remove_junk($db->escape($_POST['fluorochrome_name']));
-    $fluorochrome = find_by_field('Fluorochromes', $fluorochrome_name, 'LibelleFluo');
-    if (empty($fluorochrome)) {
+    $team_name = remove_junk($db->escape($_POST['team_name']));
+    $team = find_by_field('equipes', $team_name, 'NomE');
+    if (empty($team)) {
         if (empty($errors)) {
-            $sql = "INSERT INTO fluorochromes (LibelleFluo) VALUES ('{$fluorochrome_name}')";
+            $sql = "INSERT INTO equipes (NomE)VALUES ('{$team_name}')";
             if ($db->query($sql)) {
-                $session->msg("s", "Fluorochrome ajouté ");
-                redirect('fluorochromes.php', false);
+                $session->msg("s", "Equipe ajoutée ");
+                redirect('teams.php', false);
             } else {
                 $session->msg("d", "L'ajout a échoué.");
-                redirect('fluorochromes.php', false);
+                redirect('teams.php', false);
             }
         } else {
             $session->msg("d", $errors);
-            redirect('fluorochromes.php', false);
+            redirect('teams.php', false);
         }
     } else {
-        $session->msg("d", "Ce fluorochorme existe déja , entrer un autre .");
-        redirect('fluorochromes.php', false);
+        $session->msg("d", "Cette équipe existe déjà , entrer une autre .");
+        redirect('teams.php', false);
     }
 }
+
 ?>
 <?php include_once('../layouts/header.php'); ?>
     <div class="row">
@@ -41,32 +42,31 @@ if (isset($_POST['add_fluorochrome'])) {
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Fluorochromes</span>
+                        <span>Equipes</span>
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-hover" id="JS-data-table-fluorochromes">
+                    <table class="table table-bordered table-hover" id="JS-data-table-clones">
                         <thead>
                         <tr>
 
-                            <th class="text-center">Fluorochromes</th>
+                            <th class="text-center">Equipes</th>
                             <th class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($all_Fluorochromes as $fluorochrome): ?>
+                        <?php foreach ($all_teams as $team): ?>
                             <tr>
-                                <td class="text-center"><?php echo remove_junk(ucfirst($fluorochrome['LibelleFluo'])); ?></td>
+                                <td class="text-center"><?php echo remove_junk(ucfirst($team['NomE'])); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
-                                           data-href="delete_fluorochrome.php?IdentifiantFluo=
-                                       <?php echo (int)$fluorochrome['IdentifiantFluo']; ?>" data-toggle="modal"
+                                           data-href="delete_team.php?IdentifiantE=
+                                       <?php echo (int)$team['IdentifiantE']; ?>" data-toggle="modal"
                                            data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>
-
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -79,16 +79,15 @@ if (isset($_POST['add_fluorochrome'])) {
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Nouveau Fluorochrome</span>
+                        <span>Nouveau clone</span>
                     </strong>
                 </div>
                 <div class="panel-body">
                     <form method="post" action="#">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="fluorochrome_name"
-                                   placeholder="Fluorochrome Libellé">
+                            <input type="text" class="form-control" name="team_name" placeholder="Nom de l'équipe ">
                         </div>
-                        <button type="submit" name="add_fluorochrome" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" name="add_team" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>

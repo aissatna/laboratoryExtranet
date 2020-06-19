@@ -23,52 +23,52 @@ $all_projects = find_all_projects();
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="JS-data-table-projects">
-                    <thead>
-                    <tr>
-                        <th class="text-center">Nom</th>
-                        <th class="text-center">Email responsable</th>
-                        <th class="text-center">Date début</th>
-                        <th class="text-center">Date fin</th>
-                        <th class="text-center">Equipe</th>
-                        <th class="text-center">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($all_projects as $project): ?>
+                    <table class="table table-bordered table-hover" id="JS-data-table-projects">
+                        <thead>
                         <tr>
-                            <td class="text-center">
-                                <?php echo first_character($project['NomP'])?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo  $project['EmailR']?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo $project['DateDebutP']?>
-                            </td>
-                            <td class="text-center">
-                                <?php if (($project['DateFinP'])==='0000-00-00')''; else echo ($project['DateFinP'])?>
-                            </td>
-                            <td class="text-center">
-                                <?php echo $project['NomE']?>
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-xs btn-danger" title="Remove"
-                                       data-href="delete_project.php?IdentifiantP=
-                                       <?php echo (int)$project['IdentifiantP'];?>" data-toggle="modal"
-                                       data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
-                                    </a>
-                                    <a href="edit_project.php?id=<?php echo (int)$project['IdentifiantP'];?>"
-                                       class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
-                                        <i class="glyphicon glyphicon-pencil"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Email responsable</th>
+                            <th class="text-center">Date début</th>
+                            <th class="text-center">Date fin</th>
+                            <th class="text-center">Equipe</th>
+                            <th class="text-center">Action</th>
                         </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($all_projects as $project): ?>
+                            <tr>
+                                <td class="text-center">
+                                    <?php echo first_character($project['NomP']) ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $project['EmailR'] ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $project['DateDebutP'] ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if (($project['DateFinP']) === '0000-00-00') ''; else echo($project['DateFinP']) ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $project['NomE'] ?>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-xs btn-danger" title="Remove"
+                                           data-href="delete_project.php?IdentifiantP=
+                                       <?php echo (int)$project['IdentifiantP']; ?>" data-toggle="modal"
+                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                        </a>
+                                        <a href="edit_project.php?id=<?php echo (int)$project['IdentifiantP']; ?>"
+                                           class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
