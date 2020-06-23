@@ -1,5 +1,5 @@
 <?php ob_start();
-$page_title = 'Editer projet';
+$page_title = 'Editer fournisseur';
 require_once('../includes/load.php');
 $e_provider = find_by_id('fournisseurs',(int)$_GET['id'],'IdentifiantF');
 if(!$e_provider){
@@ -10,17 +10,14 @@ if(!$e_provider){
 ?>
 <?php
 if(isset($_POST['update'])){
-
     if(empty($errors)){
         $p_phone = (empty($_POST['provider-phone'])) ?
             '' : remove_junk($db->escape($_POST['provider-phone']));
-        $p_siteweb = (empty($_POST['provider-siteweb'])) ?
-            '' : remove_junk($db->escape($_POST['provider-siteweb']));
         $p_listprices = (empty($_POST['provider-listprices'])) ?
             '' : remove_junk($db->escape($_POST['provider-listprices']));
       
         $query   = "UPDATE fournisseurs SET";
-        $query  .=" TelephoneF ='{$p_phone}', SiteWebF ='{$p_siteweb}' ,ListeDesPrix ='{$p_listprices}'";
+        $query  .=" TelephoneF ='{$p_phone}',ListeDesPrix ='{$p_listprices}'";
         $query  .=" WHERE IdentifiantF ='{$e_provider['IdentifiantF']}'";
         $result = $db->query($query);
         if($result && $db->affected_rows() === 1){
@@ -46,18 +43,12 @@ if(isset($_POST['update'])){
         <form method="post" action="edit_provider.php?id=<?php echo (int)$e_provider['IdentifiantF'];?>" class="clearfix">
           <div class="form-group">
               <label for="phone" class="control-label"> Télephone </label>
-              <input type="text" class="form-control" name="provider-phone" id="provider-phone"  pattern="[0-9]{10}" >
-          </div>
-          <div class="form-group">
-              <label for="siteweb" class="control-label"> Site Web </label>
-              <input type="url" class="form-control" name="provider-siteweb" id="provider-siteweb"
-                      placeholder="https://example.com">
+              <input type="tel" class="form-control" name="provider-phone" id="provider-phone"  pattern="[0-9]{10}" >
           </div>
           <div class="form-group">
               <label for="listprices" class="control-label"> Liste des prix </label>
-              <input type="file" class="form-control" name="provider-listprices" id="provider-listprices"  >
+              <input type="file" class="form-control-file" name="provider-listprices" id="provider-listprices"  >
           </div>
-
             <div class="form-group clearfix">
                 <button type="submit" name="update" class="btn btn-info">Modifier</button>
             </div>

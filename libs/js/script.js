@@ -4,18 +4,18 @@
 /*--------------------------------------------------------------*/
 function toggleSideBar() {
     var sideBar = document.getElementById("js__sidebar");
-    //var main_page = document.getElementById("js__main-page");
+    var main_page = document.getElementById("js__main-page");
 
     if (sideBar.style.width === '250px') {
 
         sideBar.style.width = '0px';
-
+        main_page.style.opacity='1';
 
       //  main_page.style.marginLeft = '0px';
     } else {
         sideBar.style.width = '250px';
         //sideBar.style.zIndex = '5';
-        //main_page.style.marginLeft = '250px';
+        main_page.style.opacity = '0.6';
 
     }
 }
@@ -42,4 +42,20 @@ $(document).ready(function () {
         .each(function () {
             $(this).DataTable();
         })
+});
+/***********************/
+$(document).ready(function() {
+    $('#select_isotypes , ' +
+        '#select_especes,' +
+        '#select_clones,' +
+        '#select_Fluorochromes')
+        .multiselect({
+        enableFiltering: true,
+        buttonWidth: '100%',
+        maxHeight:400,
+        includeSelectAllOption: true,
+        enableCaseInsensitiveFiltering:true,
+
+
+    });
 });

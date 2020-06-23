@@ -34,7 +34,7 @@ if (!empty($_POST['volumeF'])) {
     <form method="post" action="confirm_recap.php" class="clearfix">
         <div class="form-group">
             <label for="provider-name" class="control-label"> Nom du fournisseur :</label>
-            <?php echo $provider['NomF']; ?>
+            <?php echo $provider['RaisonSocialeF']; ?>
         </div>
         <div class="form-group">
             <label for="tubesnumber" class="control-label"> Nombre de tubes récu :</label>

@@ -32,9 +32,13 @@ if (isset($_POST['add_team'])) {
 ?>
 <?php include_once('../layouts/header.php'); ?>
     <div class="row">
-        <div class="col-md-12">
-            <?php echo display_msg($msg); ?>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <h4>
+                <?php echo display_msg($msg); ?>
+            </h4>
         </div>
+        <div class="col-md-4"></div>
     </div>
     <div class="row">
         <div class="col-md-7">

@@ -19,10 +19,9 @@
             <div class="text-center">
                 <img src="libs/img/logo.png">
                 <h1>Welcome</h1>
-
             </div>
             <a href="php/login.php" target="_blank" class="btn btn-info btn-block"> Gestionnaire</a>
-            <a href="php/home_manager.php" target="_blank" class="btn btn-info btn-block"> Utilisateur</a>
+            <a href="php/home_user.php" target="_blank" class="btn btn-info btn-block"> Utilisateur</a>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4"></div>
     </div>

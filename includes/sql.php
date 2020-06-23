@@ -17,15 +17,22 @@ function find_by_sql($sql)
 
 function find_all_antibodies()
 {
-    $sql = "SELECT frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,C.LibelleC,
-          (SELECT SUM(C.volume) FROM contenir C WHERE C.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock',
+    $sql = "SELECT Distinct  frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,f1.libellefluo ,t1.libelletype ,C.LibelleC,e1.LibelleEsp,
+          (SELECT SUM(t.volume) FROM tubes t WHERE t.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock',
           A.SeuilAlerte,A.EtatStockA
-          FROM anticorps A,fournir f ,fournisseurs frs ,clones C ,cloneanticorps CA
+          FROM anticorps A,fournir f ,fournisseurs frs ,clones C ,cloneanticorps CA ,fluorochromes f1 ,fluorochromeAnticorps f2 ,types t1 , typeanticorps t2 ,especes e1 ,especeanticorps e2
           WHERE A.IdentifiantA = F.IdentifiantA
           AND F.IdentifiantF = Frs.IdentifiantF
           AND A.IdentifiantA = CA.IdentifiantA
           AND CA.IdentifiantC =C.IdentifiantC
-          GROUP BY  frs.RaisonSocialeF ,A.IdentifiantA,A.DesignationA,A.SeuilAlerte,A.EtatStockA";
+          AND A.IdentifiantA = f2.IdentifiantA
+          AND f2.identifiantfluo = f1.identifiantfluo
+          AND A.IdentifiantA = t2.IdentifiantA
+          AND t2.identifiantType = t1.identifiantType
+          AND A.IdentifiantA = e2.IdentifiantA
+          AND e2.IdentifiantEsp = e1.IdentifiantEsp
+          GROUP BY frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,f1.libellefluo ,t1.libelletype ,C.LibelleC,e1.LibelleEsp,  A.SeuilAlerte,A.EtatStockA
+          ";
     $result = find_by_sql($sql);
     return $result;
 }
@@ -206,13 +213,38 @@ function find_max_id($table, $idFieldName)
 /*--------------------------------------------------------------*/
 function find_all_tubes($IdentifiantA)
 {
-    $sql = "SELECT T.referenceT ,C.volume,T.EtatTube
-            FROM   tubes T , contenir C
-            WHERE  T.referenceT = C.referenceT
-            AND    C.IdentifiantA = $IdentifiantA
+    $sql = "SELECT T.referenceT ,T.volume,T.EtatTube
+            FROM   tubes T
+            WHERE  T.IdentifiantA = $IdentifiantA
             AND T.EtatTube <>'vide'";
     $result = find_by_sql($sql);
     return $result;
 }
+/*--------------------------------------------------------------*/
+/* Function for updating stock availibility of antibody
+/*--------------------------------------------------------------*/
+
+function update_availibility_stock ($Etat, $IdentifiantA)
+{ global $db;
+    $sql = "UPDATE anticorps  SET
+          EtatStockA ='{$Etat}'
+          WHERE IdentifiantA ='{$IdentifiantA}'";
+    $result = $db->query($sql);
+
+}
+
+
+/*--------------------------------------------------------------*/
+/* Function for Finding quantity in stock of antibody
+/*--------------------------------------------------------------*/
+function find_quantity_stock($IdentifiantA)
+{
+    $sql = "SELECT SUM(T.volume) as 'QuantiteStock'
+            FROM   tubes T
+            WHERE  T.IdentifiantA = $IdentifiantA ";
+    $result = find_by_sql($sql);
+    return $result;
+}
+
 
 ?>

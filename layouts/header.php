@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
+    <link rel="stylesheet" href="../libs/Bootstrap-Multiselect/dist/css/bootstrap-multiselect.css" type="text/css">
+
 
 </head>
 <body>
 <?php if ($session->isUserLoggedIn()): ?>
-    <header id="header-page">
+    <header class="header-page">
         <div class="logo pull-left"><a href="#" onclick="toggleSideBar()"><i class="glyphicon glyphicon-menu-hamburger">
                 </i></a> <span>Stroma-Lab-Inventory</span>
         </div>
@@ -61,6 +63,20 @@
         <!-- admin menu -->
         <?php include_once('admin_menu.php'); ?>
     </div>
+<?php else:?>
+<header class="header-page">
+    <div class="logo pull-left">
+        <span>Stroma-Lab-Inventory</span>
+    </div>
+    <div class="header-content">
+        <div class="header-date pull-left">
+            <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
+        </div>
+        <div class="pull-right clearfix btn-logout">
+            <a href="../index.php" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
+        </div>
 <?php endif; ?>
 <div class="main-page" id="js__main-page">
     <div class="container-fluid">
