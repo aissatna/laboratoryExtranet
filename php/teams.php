@@ -50,7 +50,7 @@ if (isset($_POST['add_team'])) {
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-hover" id="JS-data-table-clones">
+                    <table class="table table-bordered table-hover" id="JS-data-table-teams">
                         <thead>
                         <tr>
 
@@ -67,7 +67,7 @@ if (isset($_POST['add_team'])) {
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_team.php?IdentifiantE=
                                        <?php echo (int)$team['IdentifiantE']; ?>" data-toggle="modal"
-                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                           data-target="#delete-modal"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -83,7 +83,7 @@ if (isset($_POST['add_team'])) {
                 <div class="panel-heading">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Nouveau clone</span>
+                        <span>Nouvelle équipe</span>
                     </strong>
                 </div>
                 <div class="panel-body">

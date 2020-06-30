@@ -4,17 +4,19 @@ $page_title = 'Editer Stock';
 require_once('../includes/load.php');
 $MAX_id = find_max_id('tubes', 'referenceT');
 ?>
-
-
 <?php include_once('../layouts/header.php'); ?>
-<div class="add-project-page">
     <div class="row">
-        <div class="col-md-12">
-            <?php echo display_msg($msg); ?>
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-center">
+            <h4>
+                <?php echo display_msg($msg); ?>
+            </h4>
         </div>
+        <div class="col-md-3"></div>
     </div>
     <div class="row ">
-        <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <strong>
@@ -23,8 +25,8 @@ $MAX_id = find_max_id('tubes', 'referenceT');
                     </strong>
                 </div>
                 <div class="panel-body">
-                    <form method="post" action="recapitulatif.php" class="clearfix">
-                        <small>les volumes inserées doivent être inferieures ou égal à <?php echo  $_SESSION["tube_size"]; ?> .</small>
+                    <form method="post" action="recap_update_stock.php" class="clearfix">
+                        <small>Les volumes insérés doivent être inférieurs ou égaux à la taille des tubes <span class="required-field"><?php echo  $_SESSION["tube_size"] .' μL';?> </span></small>
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
@@ -52,8 +54,9 @@ $MAX_id = find_max_id('tubes', 'referenceT');
                 </div>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
 
-</div>
+
 
 <?php include_once('../layouts/footer.php'); ?>

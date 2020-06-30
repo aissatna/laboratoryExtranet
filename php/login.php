@@ -24,7 +24,7 @@ require_once('../includes/load.php');
             <p>Sign in to start your session</p>
         </div>
         <?php echo display_msg($msg); ?>
-        <form method="post" action="auth.php">
+        <form method="post" action="authentification.php">
             <div class="form-group">
                 <label for="username" class="control-label">Username</label>
                 <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>

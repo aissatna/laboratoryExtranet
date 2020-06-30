@@ -66,7 +66,7 @@ if (isset($_POST['add_fluorochrome'])) {
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_fluorochrome.php?IdentifiantFluo=
                                        <?php echo (int)$fluorochrome['IdentifiantFluo']; ?>" data-toggle="modal"
-                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                           data-target="#delete-modal"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>

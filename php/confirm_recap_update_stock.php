@@ -39,11 +39,11 @@ $volumeF = $_SESSION['volumeF'];
 
         else {
             $session->msg("d", "L'ajout de lot a échoué.");
-            redirect('recapitulatif.php',false);
+            redirect('recap_update_stock.php',false);
         }
     } else {
         $session->msg("d", $errors);
-        redirect('recapitulatif.php',false);
+        redirect('recap_update_stock.php',false);
     }
 
 } ?>

@@ -12,31 +12,34 @@ function find_by_sql($sql)
 }
 
 /*--------------------------------------------------------------*/
-/* Function for Finding all antibodies
+/* Function for Finding all antibodies without left join
 /*--------------------------------------------------------------*/
 
-function find_all_antibodies()
+function find_all_antibodies_user()
 {
-    $sql = "SELECT Distinct  frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,f1.libellefluo ,t1.libelletype ,C.LibelleC,e1.LibelleEsp,
-          (SELECT SUM(t.volume) FROM tubes t WHERE t.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock',
-          A.SeuilAlerte,A.EtatStockA
-          FROM anticorps A,fournir f ,fournisseurs frs ,clones C ,cloneanticorps CA ,fluorochromes f1 ,fluorochromeAnticorps f2 ,types t1 , typeanticorps t2 ,especes e1 ,especeanticorps e2
+    $sql = "SELECT Distinct  frs.IdentifiantF,frs.RaisonSocialeF,A.IdentifiantA,A.DesignationA
+          FROM anticorps A,fournir f ,fournisseurs frs 
           WHERE A.IdentifiantA = F.IdentifiantA
           AND F.IdentifiantF = Frs.IdentifiantF
-          AND A.IdentifiantA = CA.IdentifiantA
-          AND CA.IdentifiantC =C.IdentifiantC
-          AND A.IdentifiantA = f2.IdentifiantA
-          AND f2.identifiantfluo = f1.identifiantfluo
-          AND A.IdentifiantA = t2.IdentifiantA
-          AND t2.identifiantType = t1.identifiantType
-          AND A.IdentifiantA = e2.IdentifiantA
-          AND e2.IdentifiantEsp = e1.IdentifiantEsp
-          GROUP BY frs.identifiantF,frs.RaisonSocialeF,frs.SiteWebF,A.IdentifiantA,A.DesignationA,f1.libellefluo ,t1.libelletype ,C.LibelleC,e1.LibelleEsp,  A.SeuilAlerte,A.EtatStockA
           ";
     $result = find_by_sql($sql);
     return $result;
 }
+/*--------------------------------------------------------------*/
+/* Function for Finding all antibodies with left join providers
+/*--------------------------------------------------------------*/
 
+function find_all_antibodies()
+{
+    $sql = "SELECT Distinct  four.IdentifiantF ,four.RaisonSocialeF,four.SiteWebF,A.IdentifiantA ,A.DesignationA 
+            ,A.SeuilAlerte,A.EtatStockA,
+            (SELECT SUM(t.volume) FROM tubes t WHERE t.IdentifiantA = A.IdentifiantA ) as 'QuantiteStock'
+            FROM anticorps A LEFT JOIN fournir f  ON A.IdentifiantA = f.IdentifiantA 
+            left join fournisseurs four on four.IdentifiantF = f.IdentifiantF
+            ";
+    $result = find_by_sql($sql);
+    return $result;
+}
 /*--------------------------------------------------------------*/
 /* Function for Finding all projects with team
 /*--------------------------------------------------------------*/
@@ -216,7 +219,7 @@ function find_all_tubes($IdentifiantA)
     $sql = "SELECT T.referenceT ,T.volume,T.EtatTube
             FROM   tubes T
             WHERE  T.IdentifiantA = $IdentifiantA
-            AND T.EtatTube <>'vide'";
+            AND lower(T.EtatTube) <>'vide'";
     $result = find_by_sql($sql);
     return $result;
 }
@@ -233,7 +236,6 @@ function update_availibility_stock ($Etat, $IdentifiantA)
 
 }
 
-
 /*--------------------------------------------------------------*/
 /* Function for Finding quantity in stock of antibody
 /*--------------------------------------------------------------*/
@@ -246,5 +248,73 @@ function find_quantity_stock($IdentifiantA)
     return $result;
 }
 
-
+/*--------------------------------------------------------------*/
+/* Function for Finding all tubes of antibody with open and close status
+/*--------------------------------------------------------------*/
+function find_tube_with_etat($IdentifiantA)
+{
+    $sql = "SELECT T.ReferenceT ,T.Volume
+            FROM   tubes T
+            WHERE  T.IdentifiantA = $IdentifiantA
+            AND (lower(T.etatTube) ='ouvert' or lower(T.etatTube)='ferme')
+            AND T.Volume<>0
+            ORDER BY T.volume  limit 1";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for updating status tubes
+/*--------------------------------------------------------------*/
+function update_tube_etat($ReferenceT,$IdentifiantA,$newEtatTube,$newVolume)
+{global $db;
+    $sql = "UPDATE tubes SET EtatTube ='{$newEtatTube}',Volume='{$newVolume}'
+                 WHERE ReferenceT = '{$ReferenceT}' AND IdentifiantA='{$IdentifiantA}'";
+    $result = $db->query($sql);
+    return($db->affected_rows() === 1 ? true : false);
+}
+/*--------------------------------------------------------------*/
+/* Function for finding clones of antibody
+/*--------------------------------------------------------------*/
+function find_clones_of_antibody($IdentifiantA)
+{
+    $sql = "SELECT C.LibelleC  FROM cloneanticorps CA, clones C
+            WHERE C.IdentifiantC=CA.IdentifiantC
+            AND CA.IdentifiantA = '{$IdentifiantA}'";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for finding species of antibody
+/*--------------------------------------------------------------*/
+function find_species_of_antibody($IdentifiantA)
+{
+    $sql = "SELECT  E.LibelleEsp FROM  especes E,especeanticorps EA
+            WHERE E.IdentifiantEsp=EA.IdentifiantEsp
+            AND EA.IdentifiantA = '{$IdentifiantA}'";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for finding Types of antibody
+/*--------------------------------------------------------------*/
+function find_Types_of_antibody($IdentifiantA)
+{
+    $sql = "SELECT T.LibelleType  FROM types T,typeanticorps TA
+            WHERE T.IdentifiantType=TA.IdentifiantType
+            AND TA.IdentifiantA = '{$IdentifiantA}'";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for finding fluorochromes of antibody
+/*--------------------------------------------------------------*/
+function find_fluorochromes_of_antibody($IdentifiantA)
+{
+    $sql = "SELECT F.LibelleFluo  FROM fluorochromes F,fluorochromeanticorps FA
+            WHERE F.IdentifiantFluo=FA.IdentifiantFluo
+            AND FA.IdentifiantA = '{$IdentifiantA}'";
+    $result = find_by_sql($sql);
+    return $result;
+}
 ?>
+

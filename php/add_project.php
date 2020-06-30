@@ -16,7 +16,6 @@ if (isset($_POST['add-project'])) {
             '' : remove_junk($db->escape($_POST['project-chef-email']));
         $p_ending_date = (empty($_POST['ending-date'])) ?
             '' : remove_junk($db->escape($_POST['ending-date']));
-
         $starting_date=strtotime($_POST['starting-date']);
         $ending_date= strtotime($_POST['ending-date']);
         $current_date=strtotime(date("Y-m-d"));
@@ -53,43 +52,61 @@ if (isset($_POST['add-project'])) {
 }
 ?>
 <?php include_once('../layouts/header.php'); ?>
-<div class="add-project-page">
-    <div class="text-center">
-        <h3>Ajouter un nouveau projet</h3>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h4>
+            <?php echo display_msg($msg); ?>
+        </h4>
     </div>
-    <?php echo display_msg($msg); ?>
-    <form method="post" action="add_project.php" class="clearfix">
-        <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
-        <div class="form-group">
-            <label for="name" class="control-label"> Nom de projet<span class="required-field">*</span> </label>
-            <input type="text" class="form-control" name="project-name" id="project-name" required>
-        </div>
-        <div class="form-group">
-            <label for="level" class="control-label">Email responsable</label>
-            <input type="email" class="form-control" name="project-chef-email">
-        </div>
-        <div class="form-group">
-            <label for="team-project">Equipe de projet<span class="required-field">*</span> </label>
-            <select class="form-control" name="team-project" id="team-project" required>
-                <?php foreach ($all_teams as $team): ?>
-                    <option value="<?php echo (int)$team['IdentifiantE']; ?>"><?php echo $team['NomE']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="starting_date" class="control-label">Date de début<span
-                        class="required-field">*</span></label>
-            <input type="date" class="form-control" name="starting-date" id="starting_date">
-        </div>
-        <div class="form-group">
-            <label for="ending-date" class="control-label">Date de fin </label>
-            <input type="date" class="form-control" name="ending-date" id="ending-date">
-        </div>
-
-        <div class="form-group clearfix">
-            <button type="submit" name="add-project" class="btn btn-info">Ajouter</button>
-        </div>
-    </form>
+    <div class="col-md-3"></div>
 </div>
+<div class="row ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    <span>nouveau projet</span>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="add_project.php" class="clearfix">
+                    <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
+                    <div class="form-group">
+                        <label for="name" class="control-label"> Nom de projet<span class="required-field">*</span> </label>
+                        <input type="text" class="form-control" name="project-name" id="project-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="level" class="control-label">Email responsable</label>
+                        <input type="email" class="form-control" name="project-chef-email">
+                    </div>
+                    <div class="form-group">
+                        <label for="team-project">Equipe de projet<span class="required-field">*</span> </label>
+                        <select class="form-control" name="team-project" id="team-project" required>
+                            <?php foreach ($all_teams as $team): ?>
+                                <option value="<?php echo (int)$team['IdentifiantE']; ?>"><?php echo $team['NomE']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="starting_date" class="control-label">Date de début<span
+                                    class="required-field">*</span></label>
+                        <input type="date" class="form-control" name="starting-date" id="starting_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="ending-date" class="control-label">Date de fin </label>
+                        <input type="date" class="form-control" name="ending-date" id="ending-date">
+                    </div>
 
+                    <div class="form-group clearfix">
+                        <button type="submit" name="add-project" class="btn btn-info">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
 <?php include_once('../layouts/footer.php'); ?>

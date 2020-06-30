@@ -5,16 +5,17 @@ $all_tubes = find_all_tubes((int)$_GET['IdentifiantA']);
 ?>
 <?php include_once('../layouts/header.php'); ?>
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
         <h4>
             <?php echo display_msg($msg); ?>
         </h4>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <strong>
@@ -27,7 +28,7 @@ $all_tubes = find_all_tubes((int)$_GET['IdentifiantA']);
                     <thead>
                     <tr>
                         <th class="text-center">Réference</th>
-                        <th class="text-center">Volume</th>
+                        <th class="text-center">Volume (μL)</th>
                         <th class="text-center">Etat tube</th>
                     </tr>
                     </thead>
@@ -50,5 +51,6 @@ $all_tubes = find_all_tubes((int)$_GET['IdentifiantA']);
             </div>
         </div>
     </div>
+    <div class="col-md-3"></div>
 </div>
 <?php include_once('../layouts/footer.php'); ?>

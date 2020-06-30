@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/bd_anticorps</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="antibodies_loubna" uuid="27638a8f-929c-46ba-a9a7-e40ae00be75d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/antibodies_db</jdbc-url>
+    </data-source>
   </component>
 </project>

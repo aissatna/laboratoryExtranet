@@ -20,8 +20,6 @@ if (isset($_POST['edit-stock'])) {
         if ($expiration_date < $current_date) {
             $session->msg("d", 'Date expiration a depasée la date du jour');
             redirect('edit_stock.php?IdentifiantA='.(int)$e_antibody['IdentifiantA'], false);
-
-
         } else
         {  $_SESSION["IdentifiantA"]=$_GET['IdentifiantA'];
             $_SESSION ["provider-name"] = $_POST['provider-name'];
@@ -39,42 +37,61 @@ if (isset($_POST['edit-stock'])) {
 ?>
 
 <?php include_once('../layouts/header.php'); ?>
-<div class="add-project-page">
-    <div class="text-center">
-        <h3> <?php $antibody = find_by_id('anticorps', (int)$_GET['IdentifiantA'], 'IdentifiantA');
-            echo 'Anticorps  ' . $antibody['DesignationA'] . ' '; ?></h3>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h4>
+            <?php echo display_msg($msg); ?>
+        </h4>
     </div>
-    <?php echo display_msg($msg); ?>
-    <form method="post" action="edit_stock.php?IdentifiantA=<?php echo (int)$e_antibody['IdentifiantA'];?>" class="clearfix">
-        <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
-        <div class="form-group">
-            <label for="provider-name">Fournisseur <span class="required-field">*</span> </label>
-            <select class="form-control" name="provider-name" id="provider-name" required>
-                <?php foreach ($all_providers as $provider): ?>
-                    <option value="<?php echo (int)$provider['IdentifiantF']; ?>"><?php echo $provider['RaisonSocialeF']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="tubes-number" class="control-label">Nombre de tubes récu <span class="required-field">*</span>
-            </label>
-            <input type="number" class="form-control" name="tubes-number" min="1" required>
-        </div>
+    <div class="col-md-3"></div>
+</div>
+<div class="row ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    <?php $antibody = find_by_id('anticorps', (int)$_GET['IdentifiantA'], 'IdentifiantA');?>
+                    <span><?php echo $antibody['DesignationA']?></span>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="edit_stock.php?IdentifiantA=<?php echo (int)$e_antibody['IdentifiantA'];?>" class="clearfix">
+                    <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
+                    <div class="form-group">
+                        <label for="provider-name">Fournisseur <span class="required-field">*</span> </label>
+                        <select class="form-control" name="provider-name" id="provider-name" required>
+                            <?php foreach ($all_providers as $provider): ?>
+                                <option value="<?php echo (int)$provider['IdentifiantF']; ?>"><?php echo $provider['RaisonSocialeF']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tubes-number" class="control-label">Nombre de tubes reçu <span class="required-field">*</span>
+                        </label>
+                        <input type="number" class="form-control" name="tubes-number" min="1" required>
+                    </div>
 
-        <div class="form-group">
-            <label for="tube_size" class="control-label">Taille tube <span class="required-field">*</span></label>
-            <input type="number" class="form-control" name="tube_size" id="tube_size" min="1" required>
-        </div>
-        <div class="form-group">
-            <label for="expiration-date" class="control-label">Date de péremption <span class="required-field">*</span>
-            </label>
-            <input type="date" class="form-control" name="expiration-date" id="expiration-date" required>
-        </div>
+                    <div class="form-group">
+                        <label for="tube_size" class="control-label">Taille tube (μL) <span class="required-field">*</span></label>
+                        <input type="number" class="form-control" name="tube_size" id="tube_size" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiration-date" class="control-label">Date de péremption <span class="required-field">*</span>
+                        </label>
+                        <input type="date" class="form-control" name="expiration-date" id="expiration-date" required>
+                    </div>
 
-        <div class="form-group clearfix">
-            <button type="submit" name="edit-stock" class="btn btn-info" >Suivant</button>
+                    <div class="form-group clearfix">
+                        <button type="submit" name="edit-stock" class="btn btn-info" >Suivant</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
+    <div class="col-md-3"></div>
 </div>
 
 <?php include_once('../layouts/footer.php'); ?>

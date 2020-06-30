@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
-    <link rel="stylesheet" href="../libs/Bootstrap-Multiselect/dist/css/bootstrap-multiselect.css" type="text/css">
-
+    <link rel="stylesheet" href="../libs/bootst-multiselect/dist/css/bootstrap-multiselect.css" type="text/css">
 
 </head>
 <body>
@@ -24,8 +23,8 @@
                 </i></a> <span>Stroma-Lab-Inventory</span>
         </div>
         <div class="header-content">
-            <div class="header-date pull-left">
-                <strong><?php echo date("F j, Y, g:i a"); ?></strong>
+            <div class="header-logo-img pull-left">
+                <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
             </div>
             <div class="pull-right clearfix">
                 <ul class="info-menu list-inline list-unstyled">
@@ -69,7 +68,7 @@
         <span>Stroma-Lab-Inventory</span>
     </div>
     <div class="header-content">
-        <div class="header-date pull-left">
+        <div class="header-logo-img pull-left">
             <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
         </div>
         <div class="pull-right clearfix btn-logout">
@@ -77,6 +76,8 @@
                 <span class="glyphicon glyphicon-log-out"></span> Log out
             </a>
         </div>
+    </div>
+</header>
 <?php endif; ?>
 <div class="main-page" id="js__main-page">
     <div class="container-fluid">

@@ -67,7 +67,7 @@ if (isset($_POST['add_clone'])) {
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_clone.php?IdentifiantC=
                                        <?php echo (int)$clone['IdentifiantC']; ?>" data-toggle="modal"
-                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                           data-target="#delete-modal"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                     </div>
                                 </td>

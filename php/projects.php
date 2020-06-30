@@ -61,7 +61,7 @@ $all_projects = find_all_projects();
                                         <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                            data-href="delete_project.php?IdentifiantP=
                                        <?php echo (int)$project['IdentifiantP']; ?>" data-toggle="modal"
-                                           data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                           data-target="#delete-modal"><i class="glyphicon glyphicon-remove"></i>
                                         </a>
                                         <a href="edit_project.php?id=<?php echo (int)$project['IdentifiantP']; ?>"
                                            class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">

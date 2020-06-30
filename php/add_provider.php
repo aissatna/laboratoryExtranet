@@ -13,8 +13,6 @@ if (isset($_POST['add-provider'])) {
         } else {
             echo 'file uploaded failed ';
         }
-
-
     } else {
         echo 'no file is selected ';
     }
@@ -31,7 +29,6 @@ if (isset($_POST['add-provider'])) {
                 '' : remove_junk($db->escape($_POST['provider-phone']));
             $prices_list = (empty($_POST['provider-listprices'])) ?
                 '' : remove_junk($db->escape($_POST['provider-listprices']));
-
             $query = "INSERT INTO fournisseurs (RaisonSocialeF, EmailF, TelephoneF, SiteWebF, ListeDesPrix)
                                      VALUES ('{$company_name}','{$email}','{$phone}','{$web_site}','{$prices_list}')";
             if ($db->query($query)) {
@@ -55,48 +52,56 @@ if (isset($_POST['add-provider'])) {
 ?>
 <?php include_once('../layouts/header.php'); ?>
 <div class="row">
-    <div class="col-md-3 "></div>
-    <div class="col-md-6 container-form">
-        <div class="text-center">
-            <h3>Ajouter un nouveau fournisseur</h3>
-        </div>
-        <div class="text-center">
-            <h4>
-                <?php echo display_msg($msg); ?>
-            </h4>
-        </div>
-        <form method="post" action="add_provider.php" enctype="multipart/form-data" class="clearfix">
-            <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
-            <div class="form-group">
-                <label for="provider-companyName" class="control-label"> Raison sociale <span class="required-field">*</span> </label>
-                <input type="text" class="form-control" name="provider-companyName" id="provider-companyName" required>
-            </div>
-            <div class="form-group">
-                <label for="email" class="control-label">Email <span class="required-field">*</span></label>
-                <input type="email" class="form-control" name="provider-email" id="provider-email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone" class="control-label"> Télephone </label>
-                <input type="tel" class="form-control" name="provider-phone" id="provider-phone" pattern="[0-9]{10}">
-            </div>
-            <div class="form-group">
-                <label for="siteweb" class="control-label"> Site Web  <span class="required-field">*</span></label>
-                <input type="url" class="form-control" name="provider-siteweb" id="provider-siteweb"
-                       placeholder="https://example.com">
-            </div>
-            <div class="form-group">
-                <label for="listprices" class="control-label"> Liste des prix </label>
-                <input type="file" class="form-control-file" name="provider-listprices" id="provider-listprices">
-            </div>
-
-            <div class="form-group clearfix">
-                <button type="submit" name="add-provider" class="btn btn-info">Ajouter</button>
-            </div>
-        </form>
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h4>
+            <?php echo display_msg($msg); ?>
+        </h4>
     </div>
-
-    <div class="col-md-3 "></div>
+    <div class="col-md-3"></div>
 </div>
+<div class="row ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    <span>nouveau fournisseur </span>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="add_provider.php" enctype="multipart/form-data" class="clearfix">
+                    <small>Les champs avec<span class="required-field">*</span> sont obligatoires .</small>
+                    <div class="form-group">
+                        <label for="provider-companyName" class="control-label"> Raison sociale <span class="required-field">*</span> </label>
+                        <input type="text" class="form-control" name="provider-companyName" id="provider-companyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email <span class="required-field">*</span></label>
+                        <input type="email" class="form-control" name="provider-email" id="provider-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="control-label"> Télephone </label>
+                        <input type="tel" class="form-control" name="provider-phone" id="provider-phone" pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteweb" class="control-label"> Site Web  <span class="required-field">*</span></label>
+                        <input type="url" class="form-control" name="provider-siteweb" id="provider-siteweb"
+                               placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="listprices" class="control-label"> Liste des prix </label>
+                        <input type="file" class="form-control-file" name="provider-listprices" id="provider-listprices">
+                    </div>
 
-
+                    <div class="form-group clearfix">
+                        <button type="submit" name="add-provider" class="btn btn-info">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
 <?php include_once('../layouts/footer.php'); ?>

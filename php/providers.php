@@ -62,7 +62,7 @@ $all_providers = find_all_providers();
                                     <a href="#" class="btn btn-xs btn-danger" title="Remove"
                                        data-href="delete_provider.php?IdentifiantF=
                                        <?php echo (int)$provider['IdentifiantF']; ?>" data-toggle="modal"
-                                       data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>
+                                       data-target="#delete-modal"><i class="glyphicon glyphicon-remove"></i>
                                     </a>
                                     <a href="edit_provider.php?id=<?php echo (int)$provider['IdentifiantF']; ?>"
                                        class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">

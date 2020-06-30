@@ -6,12 +6,10 @@
     box-sizing: border-box;
 }
 body {
-    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-    /*font-size: 16px;*/
+
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
-    /*background: #f1f2f7;*/
     height: 100%;
     width: 100%;
     color: #444;
@@ -20,16 +18,7 @@ body {
     font-size: 13px;
 }
 
-.required-field {
-    color: red;
-    font-size: 16px;
-    margin: 0 5px;
-}
-.p-l-R-0{
-    padding-left: 0;
-    padding-right: 0;
 
-}
 /*--------------------------------------------------------------*/
 /* REUSABLE COMPONENTS */
 /*--------------------------------------------------------------*/
@@ -49,7 +38,11 @@ a:hover {
 .jumbotron {
     margin-bottom: 0;
 }
-
+.required-field {
+    color: red;
+    font-size: 16px;
+    margin: 0 5px;
+}
 /*---------------- form-control-----------------*/
 .form-control {
     color: #646464;
@@ -61,7 +54,7 @@ a:hover {
 
 .form-control:focus {
     background: #f8f8f8;
-    border-color: #3498DB;
+    border-color: #03A9F4;
     outline: 0;
     box-shadow: none;
 }
@@ -74,7 +67,7 @@ a:hover {
 
 .btn-primary {
     color: #fff;
-    background-color: #51aded;
+    background-color: #03A9F4;
     border-color: #3d8fd8
 }
 
@@ -125,7 +118,11 @@ a:hover {
 .btn-danger.active {
     background-color: #bb282a
 }
-
+.btn i {
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+}
 /*---------------- table  -----------------*/
 table {
     font-size: 15px;
@@ -181,11 +178,11 @@ table .label {
     padding-top: 6px
 }
 /*--------------- Modal styles------------- */
-.modal .modal-dialog {
+#delete-modal.modal .modal-dialog {
     max-width: 400px;
 }
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
-    padding: 20px 30px;
+    padding: 10px 10px;
 }
 .modal .modal-content {
     border-radius: 3px;
@@ -202,8 +199,79 @@ table .label {
     border-radius: 2px;
     min-width: 100px;
 }
+.modal .card{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+
+}
+.modal .card .card-header{
+    background: #ecf0f1;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    z-index: 20 ;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.modal .list-group-item:first-child{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*--------------- antibody checkbox----------------- */
+.antibody-checkbox {
+    position: relative;
+}
+.antibody-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    margin: 5px 0 0 3px;
+    z-index: 9;
+}
+.antibody-checkbox label:before{
+    width: 18px;
+    height: 18px;
+}
+.antibody-checkbox label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    z-index: 3;
+    transform: rotateZ(45deg);
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:before {
+    border-color: #03A9F4;
+    background: #03A9F4;
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:after {
+    border-color: #fff;
+}
+.antibody-checkbox input[type="checkbox"]:disabled + label:before {
+    color: #b8b8b8;
+    cursor: auto;
+    box-shadow: none;
+    background: #ddd;
+}
+/*--------------- Form----------------- */
 .container-form {
-    /*width: 50%;*/
+
     margin: 5px auto;
     padding: 0 20px;
     background-color: #f9f9f9;
@@ -361,6 +429,7 @@ form small {
     z-index: 100;
     top: 0;
     left: 0;
+    bottom: 15px;
     background-color: #fff;
     width: 100%;
     height: 65px;
@@ -400,8 +469,8 @@ form small {
 
 }
 
-.header-date {
-    color: #9b9b9b;
+.header-logo-img {
+
     margin-left: 20px;
 }
 
@@ -475,7 +544,6 @@ form small {
     padding: 65px 0 0;
     height: 100%;
     width: 0;
-    /* background: rgba(21,78,96,0.8);*/
     border-right: 1px solid #ddd;
     text-align: center;
     transition: 0.8s;
@@ -535,12 +603,10 @@ form small {
 .main-page {
     position: relative;
     display: block;
-    top: 50px;
+    top: 65px;
     left: 0;
-    padding: 35px 15px 20px 15px;;
+    padding: 35px 15px 20px 15px;
 }
 
-/*--------------------------------------------------------------*/
-/* add-project-page
-/*--------------------------------------------------------------*/
+
 
