@@ -142,11 +142,18 @@ table tfoot tr td:last-child {
     font-weight: normal;
 }
 
-table .label {
+table .label-danger,
+table .label-info,
+table .label-success,
+table .label-warning{
     padding: 5px;
     display: inline-block;
-    width: 70px;
+    width: 80px;
+    height: 25px;
     text-align: center;
+    line-height: 15px;
+    font-size: 13px;
+    font-weight: 400;
 }
 /*-------------------- Pagination-------------*/
 .pagination li a {
@@ -311,25 +318,8 @@ form small {
     padding: 15px;
 }
 
-.panel-box {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    border: none;
-}
-
 .panel-value {
     width: 60%;
-}
-
-.panel-icon {
-    padding: 30px;
-    width: 40%;
-    border-radius: 0;
-}
-
-.panel-icon {
-    border-radius: 3px 0 0 3px;
 }
 
 .panel-value {
@@ -355,12 +345,11 @@ form small {
 }
 
 #index-page .container-content {
-    border: 0 solid #ffffff;
+    border: 0 solid #46b8da;
     padding: 30px 40px;
     margin-top: 20vh;
     box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.6);
 }
-
 #index-page .btn {
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -409,11 +398,16 @@ form small {
 }
 
 #login-page .btn {
-    font-weight: bold;
-    border-radius: 6px;
-    line-height: 20px;
-    font-size: 16px;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 6px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: bold;
     text-shadow: 0 1px 1px #888;
 }
 

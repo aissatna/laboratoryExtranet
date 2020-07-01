@@ -1,7 +1,7 @@
 <?php ob_start();
 $page_title = 'Anticorps';
 require_once('../includes/load.php');
-$all_antibodies = find_all_antibodies();
+$all_antibodies = find_all_antibodies_user();
 ?>
 <?php
 if (isset($_POST["next"])) {
@@ -94,7 +94,7 @@ if (isset($_POST["next"])) {
                         </table>
                     </div>
                     <div class="form-group clearfix text-center">
-                        <button type="submit" name="take-antibody" class="btn btn-info"id="Button1">Suivant</button>
+                        <button type="submit" name="take-antibody" class="btn btn-info"id="Button1">Prélever</button>
                     </div>
                 </form>
             </div>

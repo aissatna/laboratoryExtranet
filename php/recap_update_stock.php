@@ -23,14 +23,6 @@ if (!empty($_POST['volumeF'])) {
 }
 ?>
 <?php include_once('../layouts/header.php'); ?>
-<!--<div class="add-project-page">
-    <div class="text-center">
-        <h3>Récapitulatif du l'anticorps <?php /*$antibody = find_by_id('anticorps', (int)$IdentifiantA, 'IdentifiantA');
-            echo $antibody['DesignationA']; */?></h3>
-    </div>
-    <?php /*echo display_msg($msg); */?>
-
-</div>-->
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 text-center">
@@ -58,7 +50,7 @@ if (!empty($_POST['volumeF'])) {
                        <strong><?php echo $provider['RaisonSocialeF']; ?></strong>
                     </div>
                     <div class="form-group">
-                        <label for="tubesnumber" class="control-label"> Nombre de tubes reçu :</label>
+                        <label for="tubesnumber" class="control-label"> Nombre de tubes reçus :</label>
                        <strong><?php echo $tubesnumber; ?></strong>
                     </div>
                     <div class="form-group">
@@ -70,7 +62,7 @@ if (!empty($_POST['volumeF'])) {
                        <strong><?php echo $expirationdate; ?></strong>
                     </div>
                     <div class="form-group">
-                        <label for="tube_informations" class="control-label"> Informations Tubes :</label>
+                        <label for="tube_informations" class="control-label"> Informations tubes :</label>
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>

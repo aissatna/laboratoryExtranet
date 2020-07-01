@@ -48,7 +48,7 @@ require_once('../includes/load.php');
                         <tr>
                             <th class="text-center">Anticorps</th>
                             <th class="text-center">Quantité stockée (μL)</th>
-                            <th class="text-center">Quantité prélevée (μL)<span class="required-field">*</span></th>
+                            <th class="text-center">Quantité a prélevé  (μL)<span class="required-field">*</span></th>
                         </tr>
                         </thead>
                         <tbody>

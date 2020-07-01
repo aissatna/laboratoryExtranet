@@ -63,12 +63,6 @@ class Mysqli_DB
     {
         return mysqli_fetch_array($statement);
     }
-
-    public function fetch_object($statement)
-    {
-        return mysqli_fetch_object($statement);
-    }
-
     public function fetch_assoc($statement)
     {
         return mysqli_fetch_assoc($statement);

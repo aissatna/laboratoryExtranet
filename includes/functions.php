@@ -78,8 +78,7 @@ function display_msg($msg = '')
     }
 }
 /*--------------------------------------------------------------*/
-/* Function for Display Session Message
-   Ex echo display_msg($message);
+/* Function for updating antibody status
 /*--------------------------------------------------------------*/
 function verification_stock ($seuil , $quantite_stock){
     $marge = 2 * $seuil ;

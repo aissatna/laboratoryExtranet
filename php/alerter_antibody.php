@@ -1,16 +1,15 @@
-<?php
-ob_start();
-$page_title = 'Signaler ';
+<?php ob_start();
 require_once('../includes/load.php');
+?>
+<?php
 $a_antibody = find_by_id('anticorps', (int)$_GET['id'], 'IdentifiantA');
-if (!$antibody) {
+if (!$a_antibody) {
     $session->msg("d", "Anticorps non trouvé .");
     redirect('antibodies_user.php');
 }
 ?>
-
 <?php
-if(isset($_POST['warning-type'])){
+if (isset($_POST['alerter'])) {
     $warning_type = remove_junk($db->escape($_POST['warning-type']));
     $project_ID=  $_SESSION['project-id'];
     $antibody_ID = $a_antibody['IdentifiantA'];
@@ -21,17 +20,20 @@ if(isset($_POST['warning-type'])){
             ('{$warning_date}','{$antibody_ID}','{$project_ID}', '{$warning_massage}','{$warning_type}')";
     if ($db->query($query)) {
         //sucess
-        $session->msg('s', "Message envoyé. ");
-        redirect('antibodies_user.php', false);
+        $query_2 = "UPDATE anticorps  SET  EtatStockA = 'Signaler' WHERE IdentifiantA ='{$antibody_ID}'";
+        if ($db->query($query_2)) {
+            $session->msg('s', "Anticorps signalé. ");
+            redirect('antibodies_user.php', false);
+        }
     } else {
         //failed
-        $session->msg('d', "erreur.");
+        $session->msg('d', "Erreur !! veuillez réessayer plus tard");
         redirect('antibodies_user.php', false);
     }
-}else {
-    $session->msg("d", "Il manque des renseignements");
-    redirect('alerter_antibody.php', false);
+
 }
+
+
 ?>
 <?php include_once('../layouts/header.php'); ?>
 <div class="row">

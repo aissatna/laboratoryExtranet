@@ -26,18 +26,18 @@ if (isset($_POST['preleve'])){
             <div class="panel-heading clearfix">
                 <strong>
                     <span class="glyphicon glyphicon-th"></span>
-                    <span>Récapitulatif du prélèvement </span>
+                    <span>Validation du prélèvement </span>
                 </strong>
             </div>
             <div class="panel-body">
                 <form method="post" action="valider_prelevement.php" class="clearfix">
                     <div class="form-group">
-                        <label for="provider-name" class="control-label"> Equipe :</label>
+                        <label for="provider-name" class="control-label"><strong>Equipe :</strong> </label>
                         <?php $team = find_by_id('equipes', (int)$_SESSION['team-id'], 'IdentifiantE');?>
                         <?php echo first_character($team['NomE']) ; ?>
                     </div>
                     <div class="form-group">
-                        <label for="provider-name" class="control-label"> Projet :</label>
+                        <label for="provider-name" class="control-label"><strong>Projet :</strong> </label>
                         <?php $project = find_by_id('projets', (int)$_SESSION['project-id'], 'IdentifiantP');?>
                        <?php echo first_character($project['NomP']) ; ?>
                     </div>
@@ -46,7 +46,7 @@ if (isset($_POST['preleve'])){
                             <thead>
                             <tr>
                                 <th class="text-center">Anticorps</th>
-                                <th class="text-center">Quantité prélevée (μL)</th>
+                                <th class="text-center">Quantité a prélevé (μL)</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,7 +54,7 @@ if (isset($_POST['preleve'])){
                                 <?php $antibody = find_by_id('anticorps', $antibodyID, 'IdentifiantA');?>
                                 <tr>
                                     <td class="text-center">
-                                        <?php first_character( $antibody['DesignationA'])?>
+                                        <?php echo first_character($antibody['DesignationA'])?>
                                     </td>
                                     <td class="text-center">
                                         <?php echo $quantitesP[$key] ?>

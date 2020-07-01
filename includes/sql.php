@@ -17,7 +17,7 @@ function find_by_sql($sql)
 
 function find_all_antibodies_user()
 {
-    $sql = "SELECT Distinct  frs.IdentifiantF,frs.RaisonSocialeF,A.IdentifiantA,A.DesignationA
+    $sql = "SELECT Distinct  frs.IdentifiantF,frs.RaisonSocialeF,A.IdentifiantA,A.DesignationA,A.EtatStockA
           FROM anticorps A,fournir f ,fournisseurs frs 
           WHERE A.IdentifiantA = F.IdentifiantA
           AND F.IdentifiantF = Frs.IdentifiantF

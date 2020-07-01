@@ -72,7 +72,7 @@
             <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
         </div>
         <div class="pull-right clearfix btn-logout">
-            <a href="../index.php" class="btn btn-success btn-sm">
+            <a href="../index.php" class="btn btn-primary btn-sm">
                 <span class="glyphicon glyphicon-log-out"></span> Log out
             </a>
         </div>
