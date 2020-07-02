@@ -67,6 +67,7 @@ if (isset($_POST['preleve'])){
 
                     <div class="form-group clearfix">
                         <button type="submit" name="valider" class="btn btn-info">Valider </button>
+                        <a href="antibodies_user.php" class="btn btn-info pull-right"> Annuler </a>
                     </div>
                 </form>
             </div>

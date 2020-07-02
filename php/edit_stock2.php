@@ -26,7 +26,8 @@ $MAX_id = find_max_id('tubes', 'referenceT');
                 </div>
                 <div class="panel-body">
                     <form method="post" action="recap_update_stock.php" class="clearfix">
-                        <small>Les volumes insérés doivent être inférieurs ou égaux à la taille des tubes <span class="required-field"><?php echo  $_SESSION["tube_size"] .' μL';?> </span></small>
+                        <small>Les volumes insérés doivent être inférieurs ou égaux à la taille des tubes
+                            <span class="required-field"><?php echo  $_SESSION["tube_size"] .' μL';?> </span></small>
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>

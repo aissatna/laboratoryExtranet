@@ -84,9 +84,9 @@ function verification_stock ($seuil , $quantite_stock){
     $marge = 2 * $seuil ;
     if ($quantite_stock <= $seuil)
     { return 'Rupture' ;}
-    else if ( $quantite_stock >= $seuil and $quantite_stock <= $marge)
+    else if ( $quantite_stock > $seuil and $quantite_stock <= $marge)
     { return 'Risque';}
-    else if ($quantite_stock  >= $marge)
+    else if ($quantite_stock  > $marge)
     { return 'Bon';}
 }
 ?>

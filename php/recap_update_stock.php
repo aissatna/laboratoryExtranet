@@ -23,6 +23,7 @@ if (!empty($_POST['volumeF'])) {
 }
 ?>
 <?php include_once('../layouts/header.php'); ?>
+
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 text-center">
@@ -87,7 +88,7 @@ if (!empty($_POST['volumeF'])) {
                     </div>
 
                     <div class="form-group clearfix">
-                        <button type="submit" name="valider" class="btn btn-info">Valider et imprimer</button>
+                        <button type="submit" name="valider" class="btn btn-info">Valider et télécharger</button>
                     </div>
                 </form>
             </div>

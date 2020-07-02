@@ -94,7 +94,7 @@ if (isset($_POST["next"])) {
                         </table>
                     </div>
                     <div class="form-group clearfix text-center">
-                        <button type="submit" name="take-antibody" class="btn btn-info"id="Button1">Prélever</button>
+                        <button type="submit" name="take-antibody" class="btn btn-info" >Prélever</button>
                     </div>
                 </form>
             </div>

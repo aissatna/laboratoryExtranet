@@ -23,6 +23,7 @@
             </div>
             <a href="php/login.php" class="btn btn-info btn-block"> Gestionnaire</a>
             <a href="php/home_user.php" class="btn btn-info btn-block"> Utilisateur</a>
+
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4"></div>
     </div>

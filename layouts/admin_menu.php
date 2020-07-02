@@ -7,19 +7,19 @@
     </li>
     <li>
         <a href="../php/antibodies.php">
-            <i class="glyphicon glyphicon-eye-open"></i>
+            <i class="glyphicon glyphicon-th-large"></i>
             <span> Anticorps </span>
         </a>
     </li>
     <li>
         <a href="../php/projects.php">
-            <i class="glyphicon glyphicon-eye-open"></i>
+            <i class="glyphicon glyphicon-th-large"></i>
             <span> Projets </span>
         </a>
     </li>
     <li>
         <a href="../php/isotypes.php">
-            <i class="glyphicon glyphicon-plus"></i>
+            <i class="glyphicon glyphicon-th-large"></i>
             <span>Isotypes  </span>
         </a>
     </li>
@@ -43,13 +43,13 @@
     </li>
     <li>
         <a href="../php/fluorochromes.php">
-            <i class="glyphicon glyphicon-plus"></i>
+            <i class="glyphicon glyphicon-th-large"></i>
             <span>Fluorochromes </span>
         </a>
     </li>
     <li>
         <a href="../php/providers.php">
-            <i class="glyphicon glyphicon-plus"></i>
+            <i class="glyphicon glyphicon-th-large"></i>
             <span>Fournisseurs </span>
         </a>
     </li>

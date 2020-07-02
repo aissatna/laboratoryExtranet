@@ -46,4 +46,6 @@ $volumeF = $_SESSION['volumeF'];
         redirect('recap_update_stock.php',false);
     }
 
-} ?>
+}
+
+?>

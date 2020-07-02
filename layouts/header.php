@@ -10,6 +10,7 @@
             echo remove_junk($page_title);
         else echo "Stroma-Lab-Inventory"; ?>
     </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
@@ -72,7 +73,7 @@
             <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
         </div>
         <div class="pull-right clearfix btn-logout">
-            <a href="../index.php" class="btn btn-primary btn-sm">
+            <a href="../index.php" class="btn btn-info btn-sm">
                 <span class="glyphicon glyphicon-log-out"></span> Log out
             </a>
         </div>
