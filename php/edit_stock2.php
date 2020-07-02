@@ -31,8 +31,8 @@ $MAX_id = find_max_id('tubes', 'referenceT');
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center">Réference</th>
-                                <th class="text-center">Volume fourni <span class="required-field">*</span></th>
+                                <th class="text-center">Réference tube</th>
+                                <th class="text-center">Volume fourni (μL)<span class="required-field">*</span></th>
                             </tr>
                             </thead>
                             <tbody>

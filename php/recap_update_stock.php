@@ -33,6 +33,7 @@ if (!empty($_POST['volumeF'])) {
     </div>
     <div class="col-md-3"></div>
 </div>
+
 <div class="row ">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -67,8 +68,8 @@ if (!empty($_POST['volumeF'])) {
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center">Réference</th>
-                                <th class="text-center">Volume fourni</th>
+                                <th class="text-center">Réference tube</th>
+                                <th class="text-center">Volume fourni (μL)</th>
                             </tr>
                             </thead>
                             <tbody>
