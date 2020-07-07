@@ -1,3 +1,5 @@
+<?php include_once ('../includes/load.php');
+$user = current_user(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,19 +32,13 @@
             <div class="pull-right clearfix">
                 <ul class="info-menu list-inline list-unstyled">
                     <li class="profile">
-                        <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
-                            <img src="../uploads/no_image.jpg" alt="user-image" class="img-circle img-inline">
-                            <span>Admin <i class="caret"></i></span>
+                        <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false"  >
+                            <span><?php echo first_character($user['Nom'])?> <i class="caret"></i></span>
                         </a>
                         <ul class="dropdown-menu">
+
                             <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="edit account">
+                                <a href="../php/edit_account.php" title="edit account">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Settings
                                 </a>

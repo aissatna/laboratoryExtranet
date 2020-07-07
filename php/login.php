@@ -17,8 +17,8 @@ require_once('../includes/load.php');
 //if($session->isUserLoggedIn(true)) { redirect('home.php', false);}
 ?>
 <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4"></div>
-    <div class="col-xs-12 col-sm-4 col-md-4 form-container">
+    <div class="col-xs-12 col-sm-3 col-md-4"></div>
+    <div class="col-xs-12 col-sm-6 col-md-4 form-container">
         <div class="text-center">
             <h1>Welcome</h1>
             <p>Sign in to start your session</p>
@@ -40,7 +40,7 @@ require_once('../includes/load.php');
             </div>
         </form>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-3 col-md-4"></div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

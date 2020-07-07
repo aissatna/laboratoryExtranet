@@ -12,11 +12,22 @@ include_once('../layouts/header.php'); ?>
     <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3"></div>
         <div class="col-xs-12 col-sm-4 col-md-6">
-            <div class="panel">
-                <div class="jumbotron text-center">
-                    <h1>Welcome!</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <strong>
+                        <span class="glyphicon glyphicon-th"></span>
+                        <span>Notifications</span>
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    <div class="panel">
+                        <?php include_once('notification.php')?>
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
         <div class="col-xs-12 col-sm-4 col-md-3"></div>
     </div>

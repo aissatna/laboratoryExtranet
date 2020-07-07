@@ -56,8 +56,8 @@ $volumeF = $_SESSION['volumeF'];
                 $data_pdf .= '<td style="text-align: center;border: 1px solid black;">' . $volumeF[$i - 1] . '</td></tr>';
 
             }
-            /*------ print recap.pdf------*/
             $data_pdf .= '</tbody></table>';
+            /*------ print recap.pdf------*/
             $mpdf = new \Mpdf\Mpdf();
             $mpdf->WriteHTML($data_pdf);
             $mpdf->Output('Récapitulatif.pdf', 'D');

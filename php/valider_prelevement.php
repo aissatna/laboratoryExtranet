@@ -2,12 +2,13 @@
 ob_start();
 $page_title = 'Prélèvement';
 require_once('../includes/load.php');
+require_once('../libs/vendor/autoload.php');
+$antibodyIDs = $_SESSION['$antibodyIDs'];
+$quantitesP = $_SESSION['quantitesP'];
+$teamID = $_SESSION['team-id'];
+$projectID = $_SESSION['project-id'];
 if (isset($_POST['valider'])) {
-    $antibodyIDs = $_SESSION['$antibodyIDs'];
-    $quantitesP = $_SESSION['quantitesP'];
-    $teamID = $_SESSION['team-id'];
-    $projectID = $_SESSION['project-id'];
-}
+
 $antibodyTubes = array();
 foreach ($antibodyIDs as $key => $antibodyID) {
     $referenceTubes = array();
@@ -30,6 +31,7 @@ foreach ($antibodyIDs as $key => $antibodyID) {
     }
     // save each references of tube
     $antibodyTubes[$antibodyID] = $referenceTubes;
+    $_SESSION['$antibodyTubes']=$antibodyTubes;
     // Update stock  status
     $antibody = find_by_id('anticorps', (int)$antibodyID, 'IdentifiantA');
     $seuil = $antibody['SeuilAlerte'] ;
@@ -44,6 +46,41 @@ foreach ($antibodyIDs as $key => $antibodyID) {
         $session->msg("d", "Une erreur est survenue !! ");
 
     }
+}
+}
+if(isset($_POST['print'])){
+    $antibodyTubes=$_SESSION['$antibodyTubes'];
+    /*------------- prepare and print recap---------------*/
+    $project = find_by_id('projets', (int)$projectID, 'IdentifiantP');
+    $team= find_by_id('equipes', (int)$teamID, 'IdentifiantE');
+    $data_pdf = '<h3 style="text-align: center"> Récapitulatif de prélèvement </h3> <br/>';
+    $data_pdf .= '<strong>Equipe : </strong>' . first_character( $team['NomE']) . '<br/>';
+    $data_pdf .= '<strong>Projet : </strong>' . first_character( $project['NomP']) . '<br/>';
+    $data_pdf.=' <b style="color: #4d4d4d; font-weight: 500;">Veuillez respecter les indications suivantes pour chacun des prélèvements. </b><br/>';
+     foreach ($antibodyTubes as $key => $value){
+         $antibody = find_by_id('anticorps', $key, 'IdentifiantA');
+         $data_pdf .= '<strong> Anticorps :'. first_character( $antibody['DesignationA']) .'</strong><br/>' ;
+         $data_pdf .= '<table style="margin: 20px;border: 1px solid black;width: 100%; border-collapse: collapse">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center;border: 1px solid black">Réference tube</th>
+                                <th style="text-align: center;border: 1px solid black;">Quantité a prélevé (μL)</th>
+                            </tr>
+                            </thead>
+                             <tbody>';
+         foreach ($value as $sub_key => $sub_val){
+         $data_pdf .= '<tr><td style="text-align: center;border: 1px solid black;">' . $sub_key. '</td>';
+         $data_pdf .= '<td style="text-align: center;border: 1px solid black;">' .$sub_val . '</td></tr>';
+
+     }
+         $data_pdf .= '</tbody></table>';
+
+    }
+    /*------ print recap.pdf------*/
+
+    $mpdf = new \Mpdf\Mpdf();
+    $mpdf->WriteHTML($data_pdf);
+    $mpdf->Output('Récapitulatif.pdf', 'D');
 }
 
 ?>
@@ -93,9 +130,13 @@ foreach ($antibodyIDs as $key => $antibodyID) {
                         </tbody>
                     </table>
                 <?php endforeach; ?>
-                <div class="form-group clearfix">
-                    <a href="antibodies_user.php" class="btn btn-info"> Retour </a>
-                </div>
+                <form action="#" method="post">
+                    <div class="form-group clearfix">
+                        <a href="antibodies_user.php" class="btn btn-info"> Retour </a>
+                        <button  name="print" class="btn btn-info pull-right">Imprimer </button>
+                    </div>
+                </form>
+
 
             </div>
         </div>

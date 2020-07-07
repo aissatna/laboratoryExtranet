@@ -16,6 +16,7 @@ require_once('../includes/load.php');
         }
         $antibodyIDs = array_unique($params['antibody']);
         $_SESSION['$antibodyIDs']=$antibodyIDs;
+
     } else {
         $session->msg("d", "Il manque des renseignements");
         redirect('antibodies_user.php', false);

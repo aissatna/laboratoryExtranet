@@ -134,7 +134,20 @@ function authenticate($username = '', $password = '')
     }
     return false;
 }
-
+/*--------------------------------------------------------------*/
+/* Find current log in user by session id
+/*--------------------------------------------------------------*/
+function current_user(){
+    static $current_user;
+    global $db;
+    if(!$current_user){
+        if(isset($_SESSION['user_id'])):
+            $user_id = intval($_SESSION['user_id']);
+            $current_user = find_by_id('gestionnaire',$user_id,'IdentifiantG');
+        endif;
+    }
+    return $current_user;
+}
 /*--------------------------------------------------------------*/
 /* Determine if database table exists
 /*--------------------------------------------------------------*/
@@ -313,6 +326,28 @@ function find_fluorochromes_of_antibody($IdentifiantA)
     $sql = "SELECT F.LibelleFluo  FROM fluorochromes F,fluorochromeanticorps FA
             WHERE F.IdentifiantFluo=FA.IdentifiantFluo
             AND FA.IdentifiantA = '{$IdentifiantA}'";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for finding antibodies with status!=bon
+/*--------------------------------------------------------------*/
+
+function find_antibody_with_status()
+{
+    $sql = "SELECT A.IdentifiantA,A.DesignationA,A.EtatStockA  FROM anticorps A
+            WHERE lower(A.EtatStockA)<>'bon'";
+    $result = find_by_sql($sql);
+    return $result;
+}
+/*--------------------------------------------------------------*/
+/* Function for finding antibodies with status!=bon
+/*--------------------------------------------------------------*/
+
+function find_team_warning_antibody($IdentifiantA)
+{
+    $sql = "SELECT A.IdentifiantA,A.DesignationA,A.EtatStockA  FROM anticorps A
+            WHERE lower(A.EtatStockA)<>'bon'";
     $result = find_by_sql($sql);
     return $result;
 }

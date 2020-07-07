@@ -48,10 +48,11 @@ $all_projects = find_all_projects();
                                     <?php echo $project['EmailR'] ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php echo $project['DateDebutP'] ?>
+                                    <?php echo(date("d-m-Y", strtotime($project['DateDebutP']))); ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php if (($project['DateFinP']) === '0000-00-00') ''; else echo($project['DateFinP']) ?>
+                                    <?php if (($project['DateFinP']) === '0000-00-00') '';
+                                    else echo(date("d-m-Y", strtotime($project['DateFinP']))); ?>
                                 </td>
                                 <td class="text-center">
                                     <?php echo $project['NomE'] ?>

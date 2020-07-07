@@ -45,26 +45,44 @@ if (isset($_POST['update'])) {
 }
 ?>
 <?php include_once('../layouts/header.php'); ?>
-<div class="add-project-page">
-    <div class="text-center">
-        <h3>Modfication </h3>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h4>
+            <?php echo display_msg($msg); ?>
+        </h4>
     </div>
-    <?php echo display_msg($msg); ?>
-    <form method="post" action="edit_project.php?id=<?php echo (int)$e_project['IdentifiantP']; ?>"
-          class="clearfix">
-        <div class="form-group">
-            <label for="level" class="control-label">Email responsable</label>
-            <input type="email" class="form-control" name="project-chef-email">
-        </div>
-        <div class="form-group">
-            <label for="ending-date" class="control-label">Date de fin </label>
-            <input type="date" class="form-control" name="ending-date" id="ending-date">
-        </div>
-
-        <div class="form-group clearfix">
-            <button type="submit" name="update" class="btn btn-info">Modifier</button>
-        </div>
-    </form>
+    <div class="col-md-3"></div>
 </div>
+<div class="row ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    <span> Éditer projet </span>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="edit_project.php?id=<?php echo (int)$e_project['IdentifiantP']; ?>"
+                      class="clearfix">
+                    <div class="form-group">
+                        <label for="level" class="control-label">Email responsable</label>
+                        <input type="email" class="form-control" name="project-chef-email">
+                    </div>
+                    <div class="form-group">
+                        <label for="ending-date" class="control-label">Date de fin </label>
+                        <input type="date" class="form-control" name="ending-date" id="ending-date">
+                    </div>
 
+                    <div class="form-group clearfix">
+                        <button type="submit" name="update" class="btn btn-info">Modifier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
 <?php include_once('../layouts/footer.php'); ?>

@@ -15,8 +15,8 @@
 <body id="index-page">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-4 col-md-4"></div>
-        <div class="col-xs-12 col-sm-4 col-md-4 container-content">
+        <div class="col-xs-12 col-sm-3 col-md-4"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 container-content">
             <div class="text-center">
                 <img src="libs/img/logo.png">
                 <h1>Welcome</h1>
@@ -25,7 +25,7 @@
             <a href="php/home_user.php" class="btn btn-info btn-block"> Utilisateur</a>
 
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-4"></div>
+        <div class="col-xs-12 col-sm-3 col-md-4"></div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
