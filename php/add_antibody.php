@@ -2,15 +2,15 @@
 ob_start();
 $page_title = 'Ajouter anticorps';
 require_once('../includes/load.php');
+// Get information from database
 $all_isotypes = find_all_isotypes();
 $all_clones = find_all_clones();
 $all_especes = find_all_species();
 $all_fluorochromes = find_all_fluorochromes()
 ?>
 <?php
-
-
 if (isset($_POST['add-antibody'])) {
+    
     $req_fields = array('antibody-designation', 'antibody-seuil', 'antibody-volume');
     validate_fields($req_fields);
     $a_name = remove_junk($db->escape($_POST['antibody-designation']));

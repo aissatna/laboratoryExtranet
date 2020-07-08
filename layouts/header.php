@@ -27,7 +27,7 @@ $user = current_user(); ?>
         </div>
         <div class="header-content">
             <div class="header-logo-img pull-left">
-                <img src="../libs/img/logo.png" alt="logo-image" class="logo-img ">
+                <img src="../libs/img/logo.png" alt="logo-image" class="logo-img img-fluid">
             </div>
             <div class="pull-right clearfix">
                 <ul class="info-menu list-inline list-unstyled">

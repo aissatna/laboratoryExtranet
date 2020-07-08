@@ -35,7 +35,7 @@ if (isset($_POST["next"])) {
                 </strong>
             </div>
             <div class="panel-body">
-                <form name="antibodies-user-form" id="antibodies-user-form" action="">
+                <form name="antibodies-user-form" id="antibodies-user-form">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover" id="JS-data-table-antibodies-user">
                             <thead>

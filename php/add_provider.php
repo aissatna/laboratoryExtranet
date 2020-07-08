@@ -5,7 +5,6 @@ require_once('../includes/load.php');
 ?>
 <?php
 if(isset($_POST['add-provider'])){
-
     $fileName =$_FILES['provider-listprices']['name'];
     $fileTemp =$_FILES['provider-listprices']['tmp_name'];
     if (is_uploaded_file ($fileTemp)){
@@ -16,7 +15,6 @@ if(isset($_POST['add-provider'])){
         else {
             echo 'file uploaded failed ';
         }
-
 
     } else{
         echo 'no file is selected ';

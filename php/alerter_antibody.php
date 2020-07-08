@@ -32,8 +32,6 @@ if (isset($_POST['alerter'])) {
     }
 
 }
-
-
 ?>
 <?php include_once('../layouts/header.php'); ?>
 <div class="row">
