@@ -12,12 +12,6 @@
         </a>
     </li>
     <li>
-        <a href="../php/projects.php">
-            <i class="glyphicon glyphicon-th-large"></i>
-            <span> Projets </span>
-        </a>
-    </li>
-    <li>
         <a href="../php/isotypes.php">
             <i class="glyphicon glyphicon-th-large"></i>
             <span>Isotypes  </span>
@@ -36,15 +30,21 @@
         </a>
     </li>
     <li>
+        <a href="../php/fluorochromes.php">
+            <i class="glyphicon glyphicon-th-large"></i>
+            <span>Fluorochromes </span>
+        </a>
+    </li>
+    <li>
         <a href="../php/teams.php">
             <i class="glyphicon glyphicon-th-large"></i>
             <span>Equipes </span>
         </a>
     </li>
     <li>
-        <a href="../php/fluorochromes.php">
+        <a href="../php/projects.php">
             <i class="glyphicon glyphicon-th-large"></i>
-            <span>Fluorochromes </span>
+            <span> Projets </span>
         </a>
     </li>
     <li>
