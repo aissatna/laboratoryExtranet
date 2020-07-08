@@ -341,22 +341,20 @@ function find_antibody_with_status()
     return $result;
 }
 /*--------------------------------------------------------------*/
-/* Function for finding antibodies with status!=bon
+/* Function for finding antibodies warning project
 /*--------------------------------------------------------------*/
 
 function find_project_warning_antibody($IdentifiantA)
 {
-    $sql = "SELECT P.NomP,S.Commentaire  FROM anticorps A,signaler S ,projets P 
+    $sql = "SELECT P.NomP,S.Commentaire  FROM anticorps A,signaler S,projets P 
             where A.IdentifiantA=S.IdentifiantA AND  S.IdentifiantP=P.IdentifiantP
             AND lower(A.EtatStockA)<>'bon'
-            AND A.IdentifiantA='1'
-            AND S.DateSignalement = (SELECT max(S.DateSignalement) FROM anticorps A,signaler S ,projets P 
-            where A.IdentifiantA=S.IdentifiantA AND  S.IdentifiantP=P.IdentifiantP
-            AND lower(A.EtatStockA)<>'bon'
-            AND A.IdentifiantA='1')  
+            AND A.IdentifiantA='{$IdentifiantA}'
+            AND S.DateSignalement = (SELECT max(S.DateSignalement) FROM signaler S where  S.IdentifiantA='{$IdentifiantA}')  
             ";
     $result = find_by_sql($sql);
     return $result;
 }
+
 ?>
 

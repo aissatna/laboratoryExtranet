@@ -1,0 +1,632 @@
+/*--------------------------------------------------------------*/
+/* BASIC SETUP
+/*--------------------------------------------------------------*/
+/*color :rgba(13, 70, 83, 0.78)*/
+*{
+    box-sizing: border-box;
+}
+body {
+
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    color: #3B3838;
+    background: #F2F2F2;
+    font-family: 'Montserrat', 'Arial',sans-serif;
+    font-size: 13px;
+}
+
+
+/*--------------------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*--------------------------------------------------------------*/
+h4{
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: #777777;
+}
+
+a:hover {
+    text-decoration: red;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+}
+.required-field {
+    color: red;
+    font-size: 16px;
+    margin: 0 5px;
+}
+/*---------------- form-control-----------------*/
+.form-control {
+    color: #646464;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: all .15s ease-out;
+}
+
+.form-control:focus {
+    background: #f8f8f8;
+    border-color: #03A9F4;
+    outline: 0;
+    box-shadow: none;
+}
+
+/*---------------- buttons -----------------*/
+.btn {
+    border-radius: 3px;
+    transition: all 300ms ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #03A9F4;
+    border-color: #3d8fd8
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active {
+    color: #fff;
+    background-color: #3175b8;
+    border-color: #3d8fd8
+}
+
+.btn-success {
+    background-color: #2ecc71
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success.focus,
+.btn-success:active,
+.btn-success.active {
+    background-color: #27ae60
+}
+
+.btn-warning {
+    background-color: #e7c13e;
+    border-color: #dfba3c;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning.focus,
+.btn-warning:active,
+.btn-warning.active {
+    background-color: #d0ac2c;
+    border-color: #dfba3c;
+}
+
+.btn-danger {
+    background-color: #ed5153
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger.focus,
+.btn-danger:active,
+.btn-danger.active {
+    background-color: #bb282a
+}
+.btn i {
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+}
+/*---------------- table  -----------------*/
+table {
+    font-size: 15px;
+    font-weight: normal;
+    border-radius: 4px;
+}
+
+table tfoot tr td:first-child {
+    border: 0;
+}
+
+table tfoot tr td:last-child {
+    border-top: 1px solid #ccc;
+}
+
+
+table .label-danger,
+table .label-info,
+table .label-success,
+table .label-warning{
+    padding: 5px;
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    line-height: 15px;
+    font-size: 13px;
+    font-weight: 400;
+}
+/*-------------------- Pagination-------------*/
+.pagination li a {
+    border: none;
+    font-size: 13px;
+    min-width: 30px;
+    min-height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 2px !important;
+    text-align: center;
+    padding: 0 6px;
+}
+.pagination li a:hover {
+    color: #666;
+}
+.pagination li.active a, .pagination li.active a.page-link {
+    background: #03A9F4;
+}
+.pagination li.active a:hover {
+    background: #0397d6;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+/*--------------- Modal styles------------- */
+#delete-modal.modal .modal-dialog {
+    max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+    padding: 10px 10px;
+}
+.modal .modal-content {
+    border-radius: 3px;
+}
+.modal .modal-footer {
+    background: #ecf0f1;
+    border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+    display: inline-block;
+}
+
+.modal .btn {
+    border-radius: 2px;
+    min-width: 100px;
+}
+.modal .card{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+
+}
+.modal .card .card-header{
+    background: #ecf0f1;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    z-index: 20 ;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.modal .list-group-item:first-child{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*--------------- antibody checkbox----------------- */
+.antibody-checkbox {
+    position: relative;
+}
+.antibody-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    margin: 5px 0 0 3px;
+    z-index: 9;
+}
+.antibody-checkbox label:before{
+    width: 18px;
+    height: 18px;
+}
+.antibody-checkbox label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    z-index: 3;
+    transform: rotateZ(45deg);
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:before {
+    border-color: #03A9F4;
+    background: #03A9F4;
+}
+.antibody-checkbox input[type="checkbox"]:checked + label:after {
+    border-color: #fff;
+}
+.antibody-checkbox input[type="checkbox"]:disabled + label:before {
+    color: #b8b8b8;
+    cursor: auto;
+    box-shadow: none;
+    background: #ddd;
+}
+/*--------------- Form----------------- */
+.container-form {
+
+    margin: 5px auto;
+    padding: 0 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
+}
+
+
+form label {
+    font-weight: 400;
+    font-size: 15px;
+
+}
+
+form small {
+    display: inline-block;
+    margin-bottom: 15px;
+
+}
+.container-form h3 {
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
+
+}
+
+/*---------------- PANEL  -----------------*/
+.panel-default > .panel-heading {
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #3498DB;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 15px;
+    font-weight: 500;
+}
+
+.panel-value {
+    width: 60%;
+}
+
+.panel-value {
+    border-radius: 0 3px 3px 0;
+}
+
+.panel-icon i {
+    line-height: 65px;
+    font-size: 40px;
+    color: #fff;
+}
+/*------------------------card in panel------------------------*/
+.panel .card{
+    margin: 15px auto;
+    border-radius: 4px;
+
+
+}
+.bg-danger{
+    box-shadow: 10px 5px 5px rgb(241, 169, 160);
+}
+.bg-info{
+    box-shadow: 10px 5px 5px rgba(137, 196, 244, 1);
+}
+.bg-warning{
+    box-shadow: 10px 5px 5px rgba(253, 227, 167, 1);
+}
+.panel .card .card-header {
+    z-index: 30;
+    border-bottom: 1px solid #f5f5f5;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.panel .card .card-text{
+    padding: 1%;
+}
+
+/*--------------------------------------------------------------*/
+/* INDEX PAGE
+/*--------------------------------------------------------------*/
+#index-page {
+    background-image: linear-gradient(rgb(189, 195, 199), rgb(189, 195, 199));
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    height: 100vh;
+
+
+}
+
+#index-page .container-content {
+    border: 0 solid #46b8da;
+    padding: 30px 40px;
+    margin-top: 20vh;
+    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.6);
+}
+#index-page .btn {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 6px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #888;
+}
+
+#index-page .btn:hover {
+    background-color: #17a2b8;
+}
+
+#index-page img {
+    height: 100px;
+    width: auto;
+}
+
+/*--------------------------------------------------------------*/
+/* LOGIN-PAGE
+/*--------------------------------------------------------------*/
+#login-page {
+
+    background-image: linear-gradient(rgba(85, 90, 114, 0.65), rgba(126, 127, 126, 0.6)),
+    url('img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    height: 100vh;
+
+}
+
+#login-page .form-container {
+    border: 0 solid #ffffff;
+    padding: 30px 40px;
+    margin-top: 20vh;
+    box-shadow: -1px 4px 26px 11px rgba(255, 255, 255, 0.5);
+}
+
+#login-page .btn {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 6px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #888;
+}
+
+#login-page .btn:hover {
+    background-color: #17a2b8;
+}
+
+/*--------------------------------------------------------------*/
+/* HEADER-PAGE
+/*--------------------------------------------------------------*/
+.header-page {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    bottom: 15px;
+    background-color: #fff;
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+}
+.logo-img{
+    height: 50px;
+    width: auto;
+   margin-left: 10px;
+}
+.btn-logout{
+    margin-right: 30px;
+}
+
+.header-page .logo {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    width: 250px;
+    background-color: #17a2b8;
+}
+
+.header-page .logo a i {
+    color: #ffffff;
+    font-weight: 500;
+    text-align: center;
+}
+
+.header-page .logo a i:hover {
+    color: #000;
+
+}
+
+.header-logo-img {
+
+    margin-left: 20px;
+}
+
+.info-menu {
+    height: 60px;
+    margin: 0;
+    line-height: 60px;
+    padding: 0 15px;
+}
+
+.info-menu li.profile {
+    position: relative;
+}
+
+.profile a.toggle {
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    position: relative;
+    padding: 10px 15px ;
+    margin: 0;
+    background-color: #17a2b8;
+    border-radius: 20px;
+}
+
+.info-menu li.profile a img {
+    width: 30px;
+    height: 30px;
+
+}
+
+.dropdown-menu {
+    margin-top: 4px;
+    border-color: #fefefe;
+    border-radius: 0;
+    box-shadow: 0 0 5px rgba(86, 96, 117, 0.15);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 0;
+    display: block;
+    line-height: 35px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    position: relative;
+    line-height: 30px;
+    width: 100%;
+    border-bottom: 1px solid #f4faf9;
+}
+
+.dropdown-menu li a i {
+    margin-top: 5px;
+}
+
+.dropdown-menu li.last a {
+    border-bottom: 0;
+}
+
+/*---------------- sidebar-----------------*/
+.sidebar {
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    padding: 65px 0 0;
+    height: 100%;
+    width: 0;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    transition: 0.8s;
+    /*background-image: linear-gradient(rgba(13, 70, 83, 0.78), rgba(13, 70, 83, 0.78)), url("img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+     */
+    background-color: #2F5597;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li {
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #35404d;
+    transition: all .2s ease-in-out;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: left;
+}
+
+.sidebar ul li a span,
+.sidebar ul li i {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px rgba(0, 0, 0, 1);
+}
+
+.sidebar ul li a i {
+    color: #aeb2b7;
+    padding: 15px 22px;
+    text-align: center;
+}
+
+/*--------------------------------------------------------------*/
+/* Main-PAGE
+/*--------------------------------------------------------------*/
+.main-page {
+    position: relative;
+    display: block;
+    top: 65px;
+    left: 0;
+    padding: 35px 15px 20px 15px;
+}
+
+
+

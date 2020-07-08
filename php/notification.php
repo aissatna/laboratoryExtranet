@@ -23,16 +23,14 @@ $all_antibodies = find_antibody_with_status();
         </div>
 
     <?php elseif ($antibody['EtatStockA'] ==='Signaler'): ?>
-    <?php $antibody_warning=find_by_id('signaler',$antibody['IdentifiantA'],'IdentifiantA') ?>
-
         <div class="card text-white  bg-info text-center">
             <div class="card-header"><?php echo $antibody['DesignationA']?></div>
             <div class="card-body">
                 <h5 class="card-title"> <strong><?php echo $antibody['EtatStockA']?></strong></h5>
                 <p class="card-text">L'anticorps  <?php echo $antibody['DesignationA']?> est signalé pour le projet :
-                    <?php $project_warning_antibody=find_project_warning_antibody($antibody['IdentifiantA']);?>
-                    <?php echo $project_warning_antibody['IdentifiantA']?><br>
-                    <strong>Message :</strong>   <?php echo $project_warning_antibody['IdentifiantA']?><br>
+                    <?php $project_warning_antibody = find_project_warning_antibody($antibody['IdentifiantA']);?>
+                    <?php echo first_character($project_warning_antibody[0]['NomP']);?><br>
+                    <strong>Commentaire :</strong>  <?php echo $project_warning_antibody[0]['Commentaire'];?><br>
 
 
                     .</p>
