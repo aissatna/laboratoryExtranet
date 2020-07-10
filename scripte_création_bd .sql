@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 20 juin 2020 à 01:16
+-- Généré le : jeu. 09 juil. 2020 à 12:38
 -- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.2
+-- Version de PHP : 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `bd_anticorps`
+-- Base de données : `bdd`
 --
 
 -- --------------------------------------------------------
@@ -41,11 +41,7 @@ CREATE TABLE `anticorps` (
 --
 
 INSERT INTO `anticorps` (`IdentifiantA`, `DesignationA`, `SeuilAlerte`, `EtatStockA`, `VolumePreconise`) VALUES
-(1, 'Mouse_AntiHuman', 13, 'Risque', 5),
-(2, 'Rat anti-human CD45', 50, 'Bon', 11),
-(3, 'hamster_BV421', 30, 'Risque', 8),
-(4, 'Goat-4PE5', 50, 'Bon', 7),
-(5, 'Alexa_rat2', 20, 'Rupture', 5);
+(1, 'Mouse_AntiHuman', 13, 'Risque', 5);
 
 -- --------------------------------------------------------
 
@@ -63,11 +59,7 @@ CREATE TABLE `cloneanticorps` (
 --
 
 INSERT INTO `cloneanticorps` (`IdentifiantA`, `IdentifiantC`) VALUES
-(2, 3),
-(3, 2),
-(3, 3),
-(4, 3),
-(4, 4);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -89,30 +81,6 @@ INSERT INTO `clones` (`IdentifiantC`, `LibelleC`) VALUES
 (2, '5T45'),
 (3, '4RD'),
 (4, '2RT');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `contenir`
---
-
-CREATE TABLE `contenir` (
-  `ReferenceT` int(11) NOT NULL,
-  `Volume` int(11) NOT NULL,
-  `IdentifiantA` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `contenir`
---
-
-INSERT INTO `contenir` (`ReferenceT`, `Volume`, `IdentifiantA`) VALUES
-(1, 34, 1),
-(1, 10, 2),
-(1, 0, 4),
-(35, 95, 4),
-(36, 54, 5),
-(37, 40, 3);
 
 -- --------------------------------------------------------
 
@@ -149,11 +117,7 @@ CREATE TABLE `especeanticorps` (
 --
 
 INSERT INTO `especeanticorps` (`IdentifiantA`, `IdentifiantEsp`) VALUES
-(1, 4),
-(2, 1),
-(3, 1),
-(4, 3),
-(5, 2);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -192,12 +156,7 @@ CREATE TABLE `fluorochromeanticorps` (
 --
 
 INSERT INTO `fluorochromeanticorps` (`IdentifiantA`, `IdentifiantFluo`) VALUES
-(1, 19),
-(1, 26),
-(2, 4),
-(2, 7),
-(3, 1),
-(5, 18);
+(1, 17);
 
 -- --------------------------------------------------------
 
@@ -260,9 +219,7 @@ CREATE TABLE `fournir` (
 --
 
 INSERT INTO `fournir` (`ReferenceT`, `IdentifiantA`, `IdentifiantF`, `QuantiteLiv`) VALUES
-(1, 3, 6, 76),
-(36, 4, 4, 100),
-(37, 3, 6, 44);
+(1, 1, 1, 100);
 
 -- --------------------------------------------------------
 
@@ -284,13 +241,7 @@ CREATE TABLE `fournisseurs` (
 --
 
 INSERT INTO `fournisseurs` (`IdentifiantF`, `RaisonSocialeF`, `EmailF`, `TelephoneF`, `SiteWebF`, `ListeDesPrix`) VALUES
-(2, 'Dufour', 'laurentdufour@gmail.com', '0667897654', 'http://dedalus.fr', ''),
-(4, 'Martin ', 'martin.jean@gmail.com', '0677874355', 'https://www.ut-capitole.fr', ''),
-(5, 'Bernard ', 'marie.bernard@gmail.com', '0765431123', 'www.mariemag.com', ''),
-(6, 'Thomas ', 'thomas.pierre@gmail.com', '0677899954', '', ''),
-(7, 'Durand ', 'durand.jeanne@gmail.com', '0537981187', 'www.bioanti.fr', ''),
-(9, 'Moreau', 'morceau.4cat@gmail.com', '0788123444', 'www.geniticsfourn.fr', ''),
-(18, 'AISSAT', 'aissatnabil11@gmail.com', '', 'http://www.google.fr', 'CV_Nabil_AISSAT_Job.pdf');
+(1, 'Dufour', 'laurentdufour@gmail.com', '0667897654', 'http://dedalus.fr', '');
 
 -- --------------------------------------------------------
 
@@ -328,11 +279,7 @@ CREATE TABLE `lots` (
 --
 
 INSERT INTO `lots` (`IdentifiantL`, `DatePeremption`) VALUES
-(1, '2020-05-30'),
-(2, '2020-06-10'),
-(3, '2020-06-19'),
-(4, '2020-06-27'),
-(5, '2020-06-30');
+(1, '2020-05-30');
 
 -- --------------------------------------------------------
 
@@ -353,9 +300,7 @@ CREATE TABLE `projets` (
 --
 
 INSERT INTO `projets` (`IdentifiantP`, `NomP`, `EmailR`, `DateDebutP`, `DateFinP`) VALUES
-(1, 'technologie génitics', 'pierre.marron6@gmail.com', '2020-05-07', '2020-06-25'),
-(2, 'l\'anapathe', 'lina.duval@gmail.com', '2020-05-03', '2020-06-27'),
-(21, 'stroma', '', '2020-06-25', '0000-00-00');
+(1, 'technologie génitics', 'pierre.marron6@gmail.com', '2020-05-07', '2020-06-25');
 
 -- --------------------------------------------------------
 
@@ -394,9 +339,7 @@ CREATE TABLE `travailler` (
 --
 
 INSERT INTO `travailler` (`IdentifiantE`, `IdentifiantP`) VALUES
-(1, 2),
-(2, 1),
-(2, 21);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -408,19 +351,17 @@ CREATE TABLE `tubes` (
   `ReferenceT` int(11) NOT NULL,
   `IdentifiantL` int(11) NOT NULL,
   `TailleT` int(11) NOT NULL,
-  `EtatTube` enum('vide','ouvert','ferme') NOT NULL
+  `EtatTube` enum('vide','ouvert','ferme') NOT NULL,
+  `IdentifiantA` int(11) NOT NULL,
+  `Volume` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tubes`
 --
 
-INSERT INTO `tubes` (`ReferenceT`, `IdentifiantL`, `TailleT`, `EtatTube`) VALUES
-(1, 1, 15, 'vide'),
-(35, 2, 33, 'ouvert'),
-(36, 3, 50, 'ferme'),
-(37, 5, 112, 'ferme'),
-(38, 4, 86, 'ferme');
+INSERT INTO `tubes` (`ReferenceT`, `IdentifiantL`, `TailleT`, `EtatTube`, `IdentifiantA`, `Volume`) VALUES
+(1, 1, 50, 'ouvert', 2, 22);
 
 -- --------------------------------------------------------
 
@@ -438,10 +379,7 @@ CREATE TABLE `typeanticorps` (
 --
 
 INSERT INTO `typeanticorps` (`IdentifiantA`, `IdentifiantType`) VALUES
-(1, 5),
-(4, 1),
-(4, 5),
-(5, 9);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -485,8 +423,7 @@ CREATE TABLE `utiliser` (
 --
 
 INSERT INTO `utiliser` (`IdentifiantP`, `IdentifiantA`, `DatePrelevement`) VALUES
-(1, 1, '0000-00-00'),
-(2, 2, '0000-00-00');
+(1, 1, '0000-00-00');
 
 --
 -- Index pour les tables déchargées
@@ -510,13 +447,6 @@ ALTER TABLE `cloneanticorps`
 --
 ALTER TABLE `clones`
   ADD PRIMARY KEY (`IdentifiantC`);
-
---
--- Index pour la table `contenir`
---
-ALTER TABLE `contenir`
-  ADD PRIMARY KEY (`ReferenceT`,`IdentifiantA`),
-  ADD KEY `FK_cont_anti` (`IdentifiantA`);
 
 --
 -- Index pour la table `equipes`
@@ -602,7 +532,8 @@ ALTER TABLE `travailler`
 --
 ALTER TABLE `tubes`
   ADD PRIMARY KEY (`ReferenceT`),
-  ADD KEY `FK_tubes_lots` (`IdentifiantL`);
+  ADD KEY `FK_tubes_lots` (`IdentifiantL`),
+  ADD KEY `IdentifiantA` (`IdentifiantA`);
 
 --
 -- Index pour la table `typeanticorps`
@@ -632,37 +563,37 @@ ALTER TABLE `utiliser`
 -- AUTO_INCREMENT pour la table `anticorps`
 --
 ALTER TABLE `anticorps`
-  MODIFY `IdentifiantA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IdentifiantA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `clones`
 --
 ALTER TABLE `clones`
-  MODIFY `IdentifiantC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IdentifiantC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `equipes`
 --
 ALTER TABLE `equipes`
-  MODIFY `IdentifiantE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdentifiantE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `especes`
 --
 ALTER TABLE `especes`
-  MODIFY `IdentifiantEsp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdentifiantEsp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `fluorochromes`
 --
 ALTER TABLE `fluorochromes`
-  MODIFY `IdentifiantFluo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `IdentifiantFluo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `fournisseurs`
 --
 ALTER TABLE `fournisseurs`
-  MODIFY `IdentifiantF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `IdentifiantF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `gestionnaire`
@@ -674,25 +605,25 @@ ALTER TABLE `gestionnaire`
 -- AUTO_INCREMENT pour la table `lots`
 --
 ALTER TABLE `lots`
-  MODIFY `IdentifiantL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IdentifiantL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `projets`
 --
 ALTER TABLE `projets`
-  MODIFY `IdentifiantP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `IdentifiantP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `tubes`
 --
 ALTER TABLE `tubes`
-  MODIFY `ReferenceT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ReferenceT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `types`
 --
 ALTER TABLE `types`
-  MODIFY `IdentifiantType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `IdentifiantType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Contraintes pour les tables déchargées
@@ -704,13 +635,6 @@ ALTER TABLE `types`
 ALTER TABLE `cloneanticorps`
   ADD CONSTRAINT `FK_anti_clone` FOREIGN KEY (`IdentifiantA`) REFERENCES `anticorps` (`IdentifiantA`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_clone_anti` FOREIGN KEY (`IdentifiantC`) REFERENCES `clones` (`IdentifiantC`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `contenir`
---
-ALTER TABLE `contenir`
-  ADD CONSTRAINT `FK_cont_anti` FOREIGN KEY (`IdentifiantA`) REFERENCES `anticorps` (`IdentifiantA`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_cont_tub` FOREIGN KEY (`ReferenceT`) REFERENCES `tubes` (`ReferenceT`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `especeanticorps`

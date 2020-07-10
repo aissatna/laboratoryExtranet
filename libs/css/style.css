@@ -525,7 +525,7 @@ form small {
 }
 
 .dropdown-menu {
-    margin-top: 4px;
+    margin: 4px 0 0 -20px;
     border-color: #fefefe;
     border-radius: 0;
     box-shadow: 0 0 5px rgba(86, 96, 117, 0.15);
