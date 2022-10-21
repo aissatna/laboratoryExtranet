@@ -1,6 +1,6 @@
 # laboratoryExtranet
 
-Développement d’un site web gérant les stocks d’anticorps pour les membre de labo lors de différentes manipulations.  
+Développement d'une extranet pour la gestion des stocks d’anticorps pour les membre d' laboratoire lors de différentes manipulations.  
 
 
 
